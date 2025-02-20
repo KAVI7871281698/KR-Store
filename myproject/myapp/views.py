@@ -334,5 +334,3 @@ def report(request):
         'daily_amount':  daily_total_sales,
         'daily_orders':  daily_total_orders
     })
-
-print('hi')
