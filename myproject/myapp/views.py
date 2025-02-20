@@ -5,6 +5,7 @@ from django.contrib import messages
 from functools import wraps
 from django.db.models import Q
 import os
+import datetime
 from django.db.models import Sum 
 from django.core.mail import EmailMessage
 # import razorpay
@@ -298,22 +299,38 @@ def dashboard_order(request):
     return render(request,'dashboard_order.html',{'order_item':orders})
 
 def report(request):
-    # Get the current month and year
-    current_month = datetime.datetime.now().strftime('%B')  # Example: "February"
-    current_year = datetime.datetime.now().year  # Example: 2025
+    # Get the current day and month and year
+    current_month = datetime.datetime.now().strftime('%B')
+    current_year = datetime.datetime.now().year 
+    selected_date = request.GET.get('date', datetime.date.today().isoformat())  # Gets 'YYYY-MM-DD' as a string
+    selected_date = datetime.date.fromisoformat(selected_date)
+    
 
-    # Filter orders for the current month
+    # Filter orders for the current month and current year
     monthly_orders = Ordernow.objects.filter(order_month=current_month, order_year=current_year)
 
-    # Calculate total sales for the current month
-    total_sales = monthly_orders.aggregate(total=models.Sum('total_price'))['total'] or 0
+    # Calculate total amount for the current month
+    total_amount = monthly_orders.aggregate(total_amount =Sum('total_price'))['total_amount'] or 0
 
+    # Calculate the number of order sales on that month
+    total_orders = monthly_orders.count()
+
+    #Fliter the order date and day
+    daily_orders = Ordernow.objects.filter(order_date=selected_date)
+
+    #Calculate the total amount in particular day
+    daily_total_sales = daily_orders.aggregate(total =Sum('total_price'))['total'] or 0
+
+    #Calculate the number of Orders in particular day
+    daily_total_orders = daily_orders.count()
+    
     return render(request, 'report.html', {
         'report_data': monthly_orders,
-        'total_sales': total_sales,
+        'total_sales': total_amount,
         'month': current_month,
-        'year': current_year
+        'year': current_year,
+        'orders': total_orders,
+        'selected_date': selected_date,
+        'daily_amount':  daily_total_sales,
+        'daily_orders':  daily_total_orders
     })
-
-def setting(request):
-    return render(request,'setting.html')

@@ -16,7 +16,7 @@
             <li><a href="/dashboard_product">Products</a></li>
             <li><a href="/dashboard_customer">Customers</a></li>
             <li><a href="/report">Reports</a></li>
-            <li><a href="/setting">Settings</a></li>
+            <!-- <li><a href="/setting">Settings</a></li> -->
         </ul>
     </div>
     <div class="main-content">
@@ -24,23 +24,45 @@
             <h1>Reports</h1>
         </header>
         <section class="table">
-            <h2>Sales Reports</h2>
+            <h2>Montly Reports</h2>
             <table>
                 <tr>
                     <th>Month</th>
-                    <th>Total Sales</th>
-                    <th>Orders Processed</th>
-                    <th>Revenue</th>
+                    <th>Year</th>
+                    <th>Total Orders</th>
+                    <!-- <th>Total Sales</th>
+                    <th>Orders Processed</th> -->
+                    <th>Total Amount</th>
                 </tr>
-                {% for i in report_data %}
                 <tr>
-                    <td>{{ i.order_month }}</td>
-                    <td>{{ i.order_year }}</td>
-                    <td>150</td>
-                    <td>120</td>
+                    <td>{{ month }}</td>
+                    <td>{{ year }}</td>
+                    <td>{{ orders }}</td>
+                    <td>₹{{ total_sales }}</td>
+                    <!-- <td>150</td>
+                    <td>120</td> -->
                     <!-- <td>$25,000</td> -->
                 </tr>
-                {% endfor %}
+            </table>
+            <h2>Daliy Reports</h2>
+            <table>
+                <tr>
+                    <th>Date</th>
+                    <th>Total Orders</th>
+                    <!-- <th>Total Orders</th> -->
+                    <!-- <th>Total Sales</th>
+                    <th>Orders Processed</th> -->
+                    <th>Total Amount</th>
+                </tr>
+                <tr>
+                    <td>{{ selected_date }}</td>
+                    <td>{{ daily_orders }}</td>
+                    <td>{{ daily_amount }}</td>
+                    <!-- <td>₹{{ total_sales }}</td> -->
+                    <!-- <td>150</td>
+                    <td>120</td> -->
+                    <!-- <td>$25,000</td> -->
+                </tr>
             </table>
         </section>
     </div>
