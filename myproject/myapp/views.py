@@ -298,7 +298,22 @@ def dashboard_order(request):
     return render(request,'dashboard_order.html',{'order_item':orders})
 
 def report(request):
-    return render(request,'report.html')
+    # Get the current month and year
+    current_month = datetime.datetime.now().strftime('%B')  # Example: "February"
+    current_year = datetime.datetime.now().year  # Example: 2025
+
+    # Filter orders for the current month
+    monthly_orders = Ordernow.objects.filter(order_month=current_month, order_year=current_year)
+
+    # Calculate total sales for the current month
+    total_sales = monthly_orders.aggregate(total=models.Sum('total_price'))['total'] or 0
+
+    return render(request, 'report.html', {
+        'report_data': monthly_orders,
+        'total_sales': total_sales,
+        'month': current_month,
+        'year': current_year
+    })
 
 def setting(request):
     return render(request,'setting.html')

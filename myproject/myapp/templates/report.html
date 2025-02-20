@@ -27,33 +27,20 @@
             <h2>Sales Reports</h2>
             <table>
                 <tr>
-                    <th>Report ID</th>
                     <th>Month</th>
                     <th>Total Sales</th>
                     <th>Orders Processed</th>
                     <th>Revenue</th>
                 </tr>
+                {% for i in report_data %}
                 <tr>
-                    <td>#301</td>
-                    <td>January</td>
+                    <td>{{ i.order_month }}</td>
+                    <td>{{ i.order_year }}</td>
                     <td>150</td>
                     <td>120</td>
-                    <td>$25,000</td>
+                    <!-- <td>$25,000</td> -->
                 </tr>
-                <tr>
-                    <td>#302</td>
-                    <td>February</td>
-                    <td>180</td>
-                    <td>160</td>
-                    <td>$30,000</td>
-                </tr>
-                <tr>
-                    <td>#303</td>
-                    <td>March</td>
-                    <td>200</td>
-                    <td>190</td>
-                    <td>$35,000</td>
-                </tr>
+                {% endfor %}
             </table>
         </section>
     </div>
