@@ -1,5 +1,6 @@
 from django.db import models 
 from django.core.validators import RegexValidator
+import datetime
 # Create your models here.
 class signup_page(models.Model):
     fname=models.CharField(max_length=20)
@@ -57,6 +58,8 @@ class Ordernow(models.Model):  # Order Model
         choices=[('Pending', 'Pending'), ('Processing', 'Processing'), ('Shipped', 'Shipped'), ('Delivered', 'Delivered'), ('Cancelled', 'Cancelled')],
         default='Pending'
     )
+    order_month = models.CharField(max_length=10, default=datetime.datetime.now().strftime('%B'), editable=False)  # Example: "February"
+    order_year = models.IntegerField(default=datetime.datetime.now().year, editable=False)  # Example: 2025
 
 
 
