@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products Page</title>
+    <link rel="stylesheet" href="{% static 'dashboard_product.css' %}">
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Admin Panel</h2>
+        <ul>
+            <li><a href="/dashboard">Dashboard</a></li>
+            <li><a href="/dashboard_order">Orders</a></li>
+            <li><a href="/dashboard_product">Products</a></li>
+            <li><a href="/dashboard_customer">Customers</a></li>
+            <li><a href="/report">Reports</a></li>
+            <li><a href="/setting">Settings</a></li>
+        </ul>
+    </div>
+    <div class="main-content">
+        <header>
+            <h1>Products</h1>
+        </header>
+        <section class="table">
+            <h2>Product List</h2>
+            <table>
+                <tr>
+                    <th>Product ID</th>
+                    <th>Name</th>
+                    <th>Brand Name</th>
+                    <th>Category</th>
+                    <th>Price</th>
+                    <th>Stock</th>
+                </tr>
+                {% for i in product_items %}
+                <tr>
+                    <td>{{ i.product_id }}</td>
+                    <td>{{ i.product_name }}</td>
+                    <td>{{ i.brand_name }}</td>
+                    <td>{{ i.category }}</td>
+                    <td>₹{{ i.price }}</td>
+                    <td>{{ i.stock }}</td>
+                </tr>
+                {% endfor %}
+                <!-- <tr>
+                    <td>#102</td>
+                    <td>Headphones</td>
+                    <td>Accessories</td>
+                    <td>$150</td>
+                    <td>30</td>
+                </tr>
+                <tr>
+                    <td>#103</td>
+                    <td>Office Chair</td>
+                    <td>Furniture</td>
+                    <td>$250</td>
+                    <td>10</td>
+                </tr> -->
+            </table>
+        </section>
+    </div>
+</body>
+</html>

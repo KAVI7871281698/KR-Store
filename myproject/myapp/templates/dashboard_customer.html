@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customers Page</title>
+    <link rel="stylesheet" href="{% static 'dashboard_customer.css' %}">
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Admin Panel</h2>
+        <ul>
+            <li><a href="/dashboard">Dashboard</a></li>
+            <li><a href="/dashboard_order">Orders</a></li>
+            <li><a href="/dashboard_product">Products</a></li>
+            <li><a href="/dashboard_customer">Customers</a></li>
+            <li><a href="/report">Reports</a></li>
+            <li><a href="/setting">Settings</a></li>
+        </ul>
+    </div>
+    <div class="main-content">
+        <header>
+            <h1>Customers</h1>
+        </header>
+        <section class="table">
+            <h2>Customer List</h2>
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>address</th>
+                </tr>
+                {% for i in see %}
+                <tr>
+                    <td>{{ i.fname }}</td>
+                    <td>{{ i.email }}</td>
+                    <td>{{ i.address }}</td>
+                    <td>{{ i.mobile }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </section>
+    </div>
+</body>
+</html>

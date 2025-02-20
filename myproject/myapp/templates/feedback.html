@@ -1,0 +1,23 @@
+
+    <div class="container1">
+        <table class="section1">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Feedback</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in datas %}
+                <tr>
+                    <td>{{i.name}}</td>
+                    <td>{{i.email}}</td>
+                    <td>{{i.feedback}}</td>
+
+                    {% empty %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>

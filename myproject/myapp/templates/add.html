@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add to Cart</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Shopping Cart</h1>
+        <table class="cart-table">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><img src="/Final project/img/5star.jpg" alt="Product Image"></td>
+                    <td>Product Name</td>
+                    <td>$20.00</td>
+                    <td><button class="remove">Remove</button></td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="cart-total">
+            <h2>Total: $20.00</h2>
+            <button class="checkout">Checkout</button>
+        </div>
+    </div>
+    <div class="container">
+        <h1>Shopping Cart</h1>
+        <table class="cart-table">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><img src="/Final project/img/5star.jpg" alt="Product Image"></td>
+                    <td>Product Name</td>
+                    <td>$20.00</td>
+                    <td><button class="remove">Remove</button></td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="cart-total">
+            <h2>Total: $20.00</h2>
+            <button class="checkout">Checkout</button>
+        </div>
+    </div>
+</body>
+</html>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f8f8f8;
+    }
+    .container {
+        width: 50%;
+        margin: 50px auto;
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .cart-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+    }
+    .cart-table th, .cart-table td {
+        border: 1px solid #ddd;
+        padding: 10px;
+        text-align: center;
+    }
+    .cart-table img {
+        width: 50px;
+        height: 50px;
+    }
+    .remove, .checkout {
+        background: #ff4d4d;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+    .checkout {
+        background: #28a745;
+    }
+</style>

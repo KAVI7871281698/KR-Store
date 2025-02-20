@@ -1,0 +1,229 @@
+.section1{
+    display: flex;
+    gap: 10px;
+}
+a{
+    text-decoration: none;
+}
+.navbar{
+    position: fixed;
+    object-fit: cover;
+    position: absolute;
+}
+.logo{
+    width:130px;
+    height:91.5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color:rgb(5, 177, 245);
+    background-size: cover;
+    border-radius: 15px;
+}
+.logohd{
+    font-size: 30px;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    margin-left: 5px;
+    margin-right: 20px;
+    padding-left: 10px;
+    padding-right: 15px;
+    padding-bottom: 3px;
+    padding-top: 3px;
+    letter-spacing: 0.5px;
+    font-family: "Trirong", serif;/
+}
+
+.profilelogo{
+    width: 40px;
+    margin-bottom: 30px;
+    padding: 0;
+}
+.dropdown{
+    box-sizing: border-box;
+    list-style: none;
+    display: flex;
+}
+.dropdown>li>a::after{
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 5px;
+    /* background-color:black; */
+    left: 0;
+    /* bottom: 0; */
+    top: 0;
+    transition: 0.6s linear;
+}
+.dropdown>li>a:hover{
+    color:white;
+    background-color:orangered;
+    background-size: cover;
+    transition: 0.5s linear;
+    border-radius: 20px;
+    font-size: 23px;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-top: 5px;
+    padding-bottom: 8px;
+}
+.dropdown>li{
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding-top:5px;
+    padding-bottom:5px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+.dropdown>li>a{
+    color: black;
+    font-size: 20px;
+    letter-spacing: 0.7px;
+    position: relative;
+    transition: 0,5s;
+}
+.dropdown2{
+    list-style: none;
+    /* background-color: white; */
+    position: absolute;
+    width: 15%;
+    height: 80%;
+    margin-top: 20px;
+    visibility: hidden;
+    background-color:rgb(222, 234, 237);
+    border-radius: 10px;
+}
+.dropdown2>li>{
+    padding: 0;
+}
+.dropdown2>li>a{
+    color: black;
+    display: block;
+    padding: 6px;
+    letter-spacing: 0.5px;
+}
+.dropdown2>li>a:hover{
+    /* color: white;
+    background-color: green; */
+    font-size:large;
+    color: red;
+    font-size: large;
+    font-family: "roboto",sans-serif;
+    font-style: inherit;
+}
+.company:hover>.dropdown2{
+    visibility: visible;
+}
+.dropdown3{
+    /* background-color: white; */
+    position: absolute;
+    width: 220px;
+    height: 200px;
+    /* margin-top: 20px; */
+    visibility: hidden;
+    background-color:rgb(222, 234, 237);
+    border-radius: 10px;
+    /* margin-right: 170px; */
+}
+.dropdown3>li{
+    list-style: none;
+    margin-top: 7px;
+    margin-bottom: 2px;
+}
+.dropdown3>li>a{
+    color: black;
+    padding: 6px;
+}
+.dropdown3>li>a:hover{
+    color: red;
+    font-size: large;
+    font-family: "roboto",sans-serif;
+    /* font-family: "Poppins",sans-serif; */
+    font-style: inherit;
+}
+.profile:hover>.dropdown3{
+    visibility: visible;
+}
+.sec2video{
+    object-fit: cover; /* Ensures the video covers the entire screen */
+    /* width: 100%;
+    height: 100%; */
+    position: fixed;
+    object-fit: cover;
+    z-index: -1;
+    overflow: hidden;
+    width: 100%;
+    height: 95%;
+    top:100px;
+    /* left:15px;
+    right:15px; */
+    bottom: 20%;
+}
+.sec2head{
+    color: white;
+    display: flex;
+    justify-content: space-around;
+    font-family: "Trirong", serif;
+}
+.sec2h1{
+    font-size: 60px;
+    margin-right: 250px;
+    margin-top: 240px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-right: 3px;
+    padding-left: 3px;
+    position: relative;
+    transition: 0,5s;
+}
+.sec2h1::after{
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 5px;
+    /* background-color:black; */
+    left: 0;
+    /* bottom: 0; */
+    top: 0;
+    transition: 0.6s linear;
+}
+.sec2h1:hover{
+    color: black;
+    background-color: rgb(211, 140, 111);
+    background-size: cover;
+    transition: 0.5s linear;
+    border-radius: 20px;
+    /* font-size: 21px; */
+}
+.sec2h2{
+    font-size: 53px;
+    margin-left: 100px;
+    margin-top: 250px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-right: 3px;
+    padding-left: 3px;
+    position: relative;
+    transition: 0,5s;
+}
+.sec2h2::after{
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 5px;
+    /* background-color:black; */
+    left: 0;
+    /* bottom: 0; */
+    top: 0;
+    transition: 0.6s linear;
+}
+.sec2h2:hover{
+    color: black;
+    background-color: rgb(211, 140, 111);
+    background-size: cover;
+    transition: 0.5s linear;
+    border-radius: 20px;
+    /* font-size: 21px; */
+}

@@ -1,0 +1,97 @@
+.navbar1{
+    position: fixed;
+    object-fit: cover;
+    /* position: absolute; */
+    background-color: white;
+    width: 100%;
+}
+.demartlogo{
+    height: 90px;
+    width: 170px;
+    padding-right: 30px;
+    padding-left: 20px;
+}
+.cartlogo{
+    width: 70px;
+    height: 70px;
+    margin-left: 30px;
+    padding: 5px;
+}
+.cartlogo:hover{
+    background-color: orange;
+    transition: 0.6s;
+    border-radius: 10px;
+}
+.demartproducts{
+    margin-left:20px;
+    margin-right:25px;
+    text-decoration: none;
+    padding: 5px;
+    font-size: 15px;
+    color: black;
+}
+.demartproducts:hover{
+    background-color:orange;
+    color: white;
+    font-size: 18px;
+    transition: 0.6s linear;
+    border-radius: 5px;
+}
+.inputsearch{
+    width: 160px;
+    padding: 0;
+}
+.inputbutton{
+    width: 110px;
+    height: 30px;
+    padding: 0;
+    padding-right: 3px;
+    background-color: orange;
+    color: white;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+.section2{
+    display: flex;
+    flex-flow: row wrap;
+    gap: 15px;
+    /* margin-left: 30px; */
+}
+.productitems{
+    width: 200px;
+    margin-top: 150px;
+    margin-left: 20px;
+}
+.productname{
+    margin-left: 30px;
+    margin-top: 15px;
+    margin-bottom: 30px;
+}
+.price{
+    margin-left: 30px;
+    padding-top: 50px;
+    padding-bottom: 10px;
+}
+.cart{
+    margin-left: 30px;
+    background-color: orange;
+    color: white;
+}
+.section3{
+    display: flex;
+    gap: 160px;
+    margin-left: 30px;
+    margin-bottom: 80px;
+}
+.quantity{
+    margin-left: 40px;
+    font-size: large;
+}
+.quantity-value{
+    width: 40px;
+    height: 25px;
+    background-color: rgba(245, 245, 245, 0.063);
+    border-radius: 5px;
+}

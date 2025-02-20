@@ -1,0 +1,39 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order List</title>
+    <link rel="stylesheet" href="{% static 'shipped.css' %}">
+</head>
+<body>
+
+<h2>Order List</h2>
+
+<table>
+    <tr>
+        <th>Order ID</th>
+        <th>Product Name</th>
+        <th>Quantity</th>
+        <th>Total Price</th>
+        <th>Status</th>
+        <th>Action</th>
+    </tr>
+    {% for ship in orders %}
+    <tr>
+        <td>{{ ship.order_id }}</td>
+        <td>
+            <img src="{{ ship.order.product.demart_img.url }}" alt="Wireless Headphones" class="product-img">
+            <p>{{ ship.product_name }}</p>
+        </td>
+        <td>{{ ship.quantity }}</td>
+        <td>${{ ship.total_price }}</td>
+        <td>{{ ship.status}}</td>
+        <td> <a href="{% url 'cancel_order' ship.id %}"><button>Cancel</button></a></td>
+    </tr>
+    {% endfor %}
+</table>
+</body>
+</html>

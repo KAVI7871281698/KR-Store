@@ -1,0 +1,35 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KR Store</title>
+    <link rel="stylesheet" href="{% static 'adminlogin.css' %}">
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+</head>
+<body>
+    <div class="signin">
+        <form action="" method="" class="frm">
+            <div class="admin1">
+                <!-- <img src="img/login logo.jpg" class="adimg"> -->
+                <h1 class="heading">
+                  <span class="fs-1 pa g-1">#</span>Admin Login
+                </h1>
+                <div class="input">
+                    <input type="text" id="name" name="name" placeholder="Enter Your Username" required="" class="username">
+                    <input type="pa4" id="pwd" name="pwd" placeholder="Enter Your Password" required="" class="password">
+                </div>
+                <!-- <div class="input">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Enter Your Email" required="">
+                </div> -->
+                <div class="buttontag">
+                    <button type="submit" class="btn-primary fs-3">Signin</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

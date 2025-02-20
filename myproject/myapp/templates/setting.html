@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings Page</title>
+    <link rel="stylesheet" href="{% static 'setting.css' %}">
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Admin Panel</h2>
+        <ul>
+            <li><a href="/dashboard">Dashboard</a></li>
+            <li><a href="/dashboard_order">Orders</a></li>
+            <li><a href="/dashboard_product">Products</a></li>
+            <li><a href="/dashboard_customer">Customers</a></li>
+            <li><a href="/report">Reports</a></li>
+            <li><a href="/setting">Settings</a></li>
+        </ul>
+    </div>
+    <div class="main-content">
+        <header>
+            <h1>Settings</h1>
+        </header>
+        <section class="settings">
+            <h2>Admin Settings</h2>
+            <form>
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" value="admin">
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" value="admin@example.com">
+
+                <label for="password">New Password:</label>
+                <input type="password" id="password" name="password">
+
+                <label for="theme">Theme:</label>
+                <select id="theme" name="theme">
+                    <option value="light">Light</option>
+                    <option value="dark">Dark</option>
+                </select>
+
+                <button type="submit">Save Changes</button>
+            </form>
+        </section>
+    </div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+.signin{
+    text-align: center;
+    margin-top: 80px;
+    border: 1px solid black;
+    border-radius: 20px;
+    height: 350px;
+    width: 400px;
+    margin-left: 450px;
+    background-color: aliceblue;
+}
+.heading{
+    padding: 30px;
+    color: rgb(0, 89, 255);
+}
+.username{
+    margin-bottom: 20px;
+    width: 80%;
+    height: 50px;
+    gap: 10px;
+    font-size: 22px;
+}
+.password{
+    /* margin-bottom: 10px; */
+    width: 80%;
+    height: 50px;
+    font-size: 22px;
+}
+.buttontag{
+    margin-top: 35px;
+}
+button{
+    width: 80%;
+    height: 25%;
+    /* border-radius: 100px; */
+}
+

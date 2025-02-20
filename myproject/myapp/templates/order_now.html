@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Form</title>
+    <link rel="stylesheet" href="{% static 'order.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>{{ ordered.name }}</h1> 
+        <form method="POST" action="/order_confirm/{{ ordered.id }}/" enctype="multipart/form-data">
+            {% csrf_token %} 
+            <label for="product">Product Name</label>
+            <h6>{{ ordered.product.product_name }}</h6>
+            
+            <label for="quantity">Quantity</label>
+            <h6>{{ ordered.quantity }}</h6>
+            
+            <label for="price">Price</label>
+            <h6>{{ ordered.product.price }}</h6>
+            
+            <label for="total">Total Price</label>
+            <h6>{{ ordered.total_price }}</h6>
+            
+            <label for="date">Date</label>
+            <h6>{{ ordered.order_date }}</h6>
+            
+            <label for="address">Address</label>
+            <input type="text" id="address" class="address" name="address" placeholder="Enter address" required>
+           <button type="submit">Place the Order</button>
+            <!-- <a href="/create_order">Click</a> -->
+        </form>
+    </div>
+</body>
+</html>
+

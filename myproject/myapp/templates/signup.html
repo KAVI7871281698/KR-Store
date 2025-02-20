@@ -1,0 +1,49 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KR Store</title>
+    <link rel="stylesheet" href="{% static 'signup.css' %}">
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+</head>
+<body>
+    <div class="signin">
+        <form action="/signup" method="POST" class="frm">
+            {% csrf_token %} 
+            <div class="admin1">
+                <!-- <img src="img/login logo.jpg" class="adimg"> -->
+                <h1 class="heading">
+                  <span class="fs-1">#</span>   Signup
+                </h1>
+            {% if messages %}
+                {% for i in messages %}
+                    <p style="color: red;">{{ i }}</p>
+                {% endfor %}
+            {% endif %}
+                <div class="input">
+                    <input type="text" id="name" name="fname" placeholder="Enter Your Username" required="" class="username">
+                    <!-- <input type="text" id="name" name="lname" placeholder="Enter Your Last Name" required="" class="username"> -->
+                    <input type="email" id="name" name="email" placeholder="Enter Your Email" required="" class="username">
+                    <input type="password" id="name" name="password" placeholder="Enter Your Password" required="" class="username">
+                    <input type="password" id="name" name="confirm_password" placeholder="Confirm Password" required="" class="username">
+                    <input type="number" id="mobile" name="mobile" placeholder="Enter Mobile Number" required="" class="username">
+                    <input type="text" id="address" name="address" placeholder="Enter Your address" required="" class="username">
+                </div>
+                <!-- <div class="input">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Enter Your Email" required="">
+                </div> -->
+                <div class="buttontag">
+                    <button type="submit" class="btn-primary fs-3">Signup</button>
+                </div>
+                <div class="otherfields">
+                    <a href="/"><span class="sp">Already have a account.</span> Signin?</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

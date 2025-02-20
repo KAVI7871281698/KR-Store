@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'add_to_cart.css' %}">
+</head>
+<style>
+      .quantity-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .quantity-controls button {
+            padding: 5px 10px;
+            margin: 0 5px;
+            cursor: pointer;
+        }
+</style>
+<body>
+    {% for item in carts %}
+    <div class="container">
+        <h1>{{ item.product.brand_name}}</h1>
+        <table class="cart-table">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>product_id</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <!-- <th>totalPrice</th> -->
+                    <th>Quantity</th>
+                    <th>Date & Time</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><img src="{{ item.product.demart_img.url }}" alt="Product Image"></td>
+                    <td>{{ item.product.product_id}}</td>
+                    <td>{{ item.product.product_name}}</td>
+                    <td>${{ item.product.price}}</td>
+                    <!-- <td>{{ item.total_price }}</td> -->
+                    <td>
+                    <a href="{% url 'decrease_quantity' item.id %}"><button>-</button></a>
+                    {{ item.quantity}}
+                    <a href="{% url 'increase_quantity' item.id %}"><button>+</button></a></td>
+                    </div>
+                    <td>{{ item.order_date}}</td>
+                    <td><a href="/delete/{{ item.id }}/"><button class="remove">Remove</button></a></td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="cart-total">
+            <h2>Total: ${{ item.total_price }}</h2>
+           <a href="/order_now/{{ item.product.id }}/{{ item.id }}/"> <button class="checkout">Order Now</button></a>
+           <a href="/shipped"> <button class="checkout">shipped</button></a>
+        </div>
+    </div>
+    {% endfor %}
+</body>
+</html>

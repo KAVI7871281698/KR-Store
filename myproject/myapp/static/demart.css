@@ -1,0 +1,291 @@
+
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Product Section */
+.section2 {
+    display: flex;
+    flex-wrap: wrap; /* Ensures items wrap in smaller screens */
+    justify-content: center; /* Centers products */
+    gap: 15px;
+    position: relative;
+}
+
+/* Product Card */
+.products {
+    width: 100%; /* Full width by default */
+    max-width: 220px; /* Restrict max width */
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    text-align: center;
+    background-color: #fff;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Product Image */
+.productitems {
+    width: 100%;
+    max-width: 180px;
+    height: auto;
+    margin: 0 auto;
+}
+
+/* Product Text */
+.productname, .price {
+    font-size: 16px;
+    margin: 8px 0;
+}
+
+/* Add to Cart Button */
+.cart {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    background-color: green;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 5px;
+}
+
+.cart:hover {
+    background-color: darkgreen;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 1024px) {
+    .section2 {
+        justify-content: space-around;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .section2, .section3, .section4, .section5 {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .products {
+        width: 90%;
+        max-width: 300px;
+    }
+
+    .productitems {
+        max-width: 150px;
+    }
+
+    .cart {
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .products {
+        width: 95%;
+    }
+
+    .productitems {
+        max-width: 130px;
+    }
+
+    .cart {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .productname, .price {
+        font-size: 14px;
+    }
+}
+
+/* Navbar Styling */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: 10px 20px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+}
+
+/* Logo */
+.logo img {
+    width: 130px;
+    height: 90px;
+}
+
+/* Search Bar */
+.searchbar {
+    display: flex;
+    align-items: center;
+}
+
+.inputsearch {
+    height: 35px;
+    width: 150px;
+    font-size: 16px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.inputbutton {
+    padding: 8px 15px;
+    font-size: 16px;
+    border: none;
+    background-color: green;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-left: 5px;
+}
+
+.inputbutton:hover {
+    background-color: darkgreen;
+}
+
+/* Navigation Links */
+
+html {
+    scroll-behavior: smooth;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li {
+    margin: 0 15px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    font-size: 18px;
+    color: black;
+    padding: 10px 15px;
+}
+
+.category > a:hover {
+    background-color: green;
+    color: white;
+    transition: 0.3s;
+}
+
+/* Hamburger Menu */
+.hamburger {
+    display: none;
+    font-size: 30px;
+    cursor: pointer;
+    color: black;
+}
+
+/* Mobile Navigation */
+@media screen and (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        background-color: white;
+        padding: 15px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links li {
+        text-align: center;
+        padding: 10px;
+        width: 100%;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    /* Search Bar Adjustments */
+    .searchbar {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .inputsearch {
+        width: 100px;
+        font-size: 14px;
+    }
+
+    .inputbutton {
+        font-size: 14px;
+        padding: 5px 10px;
+        width: 70px;
+    }
+
+    /* Logo Size Adjustments */
+    .logo img {
+        width: 100px;
+        height: auto;
+    }
+
+    .category > a:hover {
+        background-color: white;
+        color: red;
+        transition: 0.3s;
+    }
+}
+
+/* Small Screens (Phones) */
+@media screen and (max-width: 480px) {
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .searchbar {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .inputsearch {
+        width: 90%;
+    }
+
+    .hamburger {
+        font-size: 25px;
+    }
+
+    .nav-links {
+        top: 50px;
+    }
+
+    .logo img {
+        width: 90px;
+    }
+
+    .category > a:hover {
+        background-color: white;
+        color: red;
+        transition: 0.3s;
+    }
+}
+
+
+

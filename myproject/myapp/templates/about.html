@@ -1,0 +1,86 @@
+<!-- {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Department Store</title>
+    <link rel="stylesheet" href="{% static 'about.css' %}">
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <header>
+        <img src="{% static 'img/logo.jpg' %}" alt="Brand Logo" class="brand-logo">
+        <h1 class="fade-in">Welcome to Our Department Store</h1>
+        <p>Your one-stop destination for all your shopping needs.</p>
+    </header>
+    
+    <section class="about-content">
+        <div class="about-text slide-in">
+            <h2>Our Story</h2>
+            <p>Founded in 2025, we have been serving customers with the best quality products at unbeatable prices.</p>
+        </div>
+        <div class="about-image">
+            <img src="{% static 'img/logo.jpg' %}" alt="Department Store">
+        </div>
+    </section>
+
+    <section class="team">
+        <h2 class="fade-in">Meet Our Team</h2>
+        <div class="team-members">
+            <div class="member hover-zoom">
+                <img src="{% static 'img/demart.png' %}" alt="CEO">
+                <p>John Doe - CEO</p>
+            </div>
+            <div class="member hover-zoom">
+                <img src="{% static 'img/spencers.jpg' %}" alt="Manager">
+                <p>Jane Smith - Store Manager</p>
+            </div>
+        </div>
+    </section>
+</body>
+</html> -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order List</title>
+</head>
+<body>
+    <h2>Orders</h2>
+    <table border="1">
+        <tr>
+            <th>Order ID</th>
+            <th>Product Name</th>
+            <th>Quantity</th>
+            <th>Total Price</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+        {% for order in orders %}
+        <tr>
+            <td>{{ order.id }}</td>
+            <td>{{ order.product_name }}</td>
+            <td>{{ order.quantity }}</td>
+            <td>${{ order.total_price }}</td>
+            <td>{{ order.status }}</td>
+            <td>
+                {% if not user.is_superuser and order.status == "Pending" %}
+                <!-- Only users can cancel their orders if Pending -->
+                <form method="POST" action="{% url 'cancel_order' order.id %}">
+                    {% csrf_token %}
+                    <button type="submit">Cancel Order</button>
+                </form>
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    {% if user.is_superuser %}
+        <p><a href="/admin/">Go to Admin Panel</a></p>
+    {% endif %}
+</body>
+</html>

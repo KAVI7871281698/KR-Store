@@ -1,0 +1,64 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orders Page</title>
+    <link rel="stylesheet" href="{% static 'dashboard_order.css' %}">
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Admin Panel</h2>
+        <ul>
+            <li><a href="/dashboard">Dashboard</a></li>
+            <li><a href="/dashboard_order">Orders</a></li>
+            <li><a href="/dashboard_product">Products</a></li>
+            <li><a href="/dashboard_customer">Customers</a></li>
+            <li><a href="/report">Reports</a></li>
+            <li><a href="/setting">Settings</a></li>
+        </ul>
+    </div>
+    <div class="main-content">
+        <header>
+            <h1>Orders</h1>
+        </header>
+        <section class="table">
+            <h2>Order List</h2>
+            <table>
+                <tr>
+                    <th>Order ID</th>
+                    <th>Customer_name</th>
+                    <th>Product_name</th>
+                    <th>Product_price</th>
+                    <th>total_price</th>
+                    <th>Quantity</th>
+                    <th>Status</th>
+                </tr>
+                {% for i in order_item %}
+                <tr>
+                    <td>{{ i.order_id }}</td>
+                    <td>{{ i.name }}</td>
+                    <td>{{ i.product_name }}</td>
+                    <td>₹{{ i.product_price}}</td>
+                    <td>₹{{ i.total_price}}</td>
+                    <td>{{ i.quantity }}</td>
+                    <td>{{ i.status}}</td>
+                </tr>
+                {% endfor %}
+                <!-- <tr>
+                    <td>#002</td>
+                    <td>Bob</td>
+                    <td>$150</td>
+                    <td>Processing</td>
+                </tr>
+                <tr>
+                    <td>#003</td>
+                    <td>Charlie</td>
+                    <td>$300</td>
+                    <td>Delivered</td>
+                </tr> -->
+            </table>
+        </section>
+    </div>
+</body>
+</html>

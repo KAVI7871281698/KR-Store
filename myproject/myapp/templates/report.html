@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reports Page</title>
+    <link rel="stylesheet" href="{% static 'report.css' %}">
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Admin Panel</h2>
+        <ul>
+            <li><a href="/dashboard">Dashboard</a></li>
+            <li><a href="/dashboard_order">Orders</a></li>
+            <li><a href="/dashboard_product">Products</a></li>
+            <li><a href="/dashboard_customer">Customers</a></li>
+            <li><a href="/report">Reports</a></li>
+            <li><a href="/setting">Settings</a></li>
+        </ul>
+    </div>
+    <div class="main-content">
+        <header>
+            <h1>Reports</h1>
+        </header>
+        <section class="table">
+            <h2>Sales Reports</h2>
+            <table>
+                <tr>
+                    <th>Report ID</th>
+                    <th>Month</th>
+                    <th>Total Sales</th>
+                    <th>Orders Processed</th>
+                    <th>Revenue</th>
+                </tr>
+                <tr>
+                    <td>#301</td>
+                    <td>January</td>
+                    <td>150</td>
+                    <td>120</td>
+                    <td>$25,000</td>
+                </tr>
+                <tr>
+                    <td>#302</td>
+                    <td>February</td>
+                    <td>180</td>
+                    <td>160</td>
+                    <td>$30,000</td>
+                </tr>
+                <tr>
+                    <td>#303</td>
+                    <td>March</td>
+                    <td>200</td>
+                    <td>190</td>
+                    <td>$35,000</td>
+                </tr>
+            </table>
+        </section>
+    </div>
+</body>
+</html>

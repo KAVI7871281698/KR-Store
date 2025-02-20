@@ -1,0 +1,82 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Department Store</title>
+    <link rel="stylesheet" href="{% static 'home_page.css' %}">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">KR Store</div>
+            <ul class="navbar">
+                <li class="dropdown1"><a href="#" style="font-size: x-large; color: red; margin-right: 40px;">{{request.session.fname}}</a>                  
+                <ul class="dropdown-content1">
+                    <div style="margin-top: 20px; color: red;">{{request.session.fname}}</div>
+                    <div style="color: red; margin-right: 10px;"> {{request.session.email}}</div>
+                    <li><a href="/">Signin</a></li>
+                    <li><a href="/signup">Signup</a></li>
+                    <li><a href="/loggout">Logout</a></li>
+                    
+                    {% if "admin7871@gmail.com" == request.session.email %}
+                    <li><a href="/dashboard">Admin Dashboard</a></li>
+                    {% endif %}
+                    <!-- <li><a href="#">Home Goods</a></li>
+                    <li><a href="#">Beauty</a></li> -->
+                </ul></li>
+                <li><a href="#">Home</a></li>
+                <li><a href="/about">About</a></li>
+                <li class="dropdown">
+                    <a href="#">Company &#9662;</a>
+                    <ul class="dropdown-content">
+                        <li><a href="/demart">Demart</a></li>
+                        <li><a href="/spencers">Spencers</a></li>
+                        <!-- <li><a href="#">Home Goods</a></li>
+                        <li><a href="#">Beauty</a></li> -->
+                    </ul>
+                </li>
+                <li><a href="/product">Products</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="hero">
+          <video autoplay muted loop class="hero-video" src="{% static 'video/store vedio.mov' %}" type="video/mp4"></video>
+              <div class="hero-content">
+                  <h1>Welcome to Our KR Store</h1>
+                  <p class="content-para" >Your one-stop shop for everything you need.</p>
+                 <a href="#shopnow"><button class="shopnow">Shop Now</button></a> 
+                </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="featured-products" id="shopnow">
+            <h2>Featured Products</h2>
+            <div class="product-grid">
+                <div class="product">
+                    <img src="{% static 'img/demartlogo.png' %}" alt="Product 1"  style="width: 140px;">  <h3>Demart</h3>
+                    <p>Shop for the Demart products</p>
+                    <a href="/demart"><button>Shopnow</button></a>
+                </div>
+                <div class="product">
+                    <img src="{% static 'img/spencers.jpg' %}" alt="Product 2" style="width: 150px; margin-top: 70px;"><h3>Spencers</h3>
+                    <p>Shop for the spencers products</p>
+                    <a href="/spencers"><button>Shopnow</button></a>
+                </div>
+                 </div>
+        </section>
+
+        <section class="about-us">
+          <h2>About Us</h2>
+          <p>We are a leading department store offering a wide range of high-quality products at competitive prices.  Our mission is to provide an exceptional shopping experience to our customers.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Department Store. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script> </body>
+</html>

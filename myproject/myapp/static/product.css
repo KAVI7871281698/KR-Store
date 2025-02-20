@@ -1,0 +1,150 @@
+.section1-navbar{
+    display: flex;
+    gap: 10px;
+    position: fixed;
+    object-fit: cover;
+    background-color: white;
+    width: 100%;
+}
+.section1-logo{
+    width: 150px;
+    height: 100px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.section1-logohd{
+    font-size: 35px;
+    margin-top: 10px;
+    margin-right: 20px;
+}
+.section1-products{
+    text-decoration: none;
+    color: black;
+    font-size: x-large;
+    height: 30px;
+    margin-top: 15px;
+    margin-left: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.section1-products:hover{
+    background-color: green;
+    height: 40px;
+    color: white;
+    transition: 0.5s linear;
+    border-radius: 10px;
+}
+.section1-input{
+    width: 110px;
+    height: 30px;
+    margin-top: 20px;
+    text-align: center;
+}
+.section1-submit{
+    width: 70px;
+    height: 32px;
+    margin-top: 20px;
+    background-color: green;
+    color: white;
+}
+.section1-cartlogo{
+    width: 50;
+    height: 50px;
+    margin-top: 10px;
+    margin-left: 10px;
+    padding-right: 10px;
+}
+.section2-logo{
+    width: 80%;
+    height: 100%;
+    margin-left: 40px;
+}
+.container2{
+    display: flex;
+    margin-top: 130px;
+    margin-right: 40px;
+}
+.section3-hd{
+    font-size: 45px;
+    font-family: monospace;
+    /* display: none; */
+    /* visibility: hidden; */
+}
+.section3-hd2{
+    font-size: 50px;
+    color: green;
+    /* font-family: "Trirong", serif; */
+    /* font-family: "roboto",sans-serif; */
+    font-family: cursive;
+}
+.section3-hd3{
+    font-size: 50px;
+    color: black;
+    /* font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-family: "Trirong", serif; */
+    font-family: fantasy;
+}
+.container3-hd1{
+    margin-left: 40px;
+    font-size: 40px;
+    font-family: fantasy;
+    color: green;
+}
+.container3{
+    display: flex;
+    flex-flow: row wrap;
+    gap: 40px;
+    margin-bottom: 30px;
+}
+.section1-img{
+    width: 200px;
+    height: 200px;
+    margin-top: 50px;
+    margin-left: 50px;
+}
+.section1-name{
+    margin-left: 90px;
+    font-size: large;
+}
+.section1-price{
+    margin-left: 90px;
+    font-size: large;
+}
+.section1-cart{
+    margin-top: 10px;
+    margin-left: 90px;
+    background-color: green;
+    color: white;
+    margin-bottom: 70px;
+}
+.quantity{
+    margin-left: 90px;
+    font-size: large;
+}
+.quantity-value{
+    width: 40px;
+    height: 30px;
+    background-color: rgba(245, 245, 245, 0.063);
+    border-radius: 5px;
+}
+.container4-hd1{
+    margin-left: 50px;
+    font-size: 40px;
+    font-family: fantasy;
+    color: green;
+}
+.container4{
+    display: flex;
+    gap: 40px;
+    margin-bottom: 30px;
+}
+.container5{
+    display: flex;
+    gap: 40px;
+    margin-bottom: 30px;
+}
+.container6{
+    display: flex;
+    gap: 40px;
+    margin-bottom: 30px;
+}

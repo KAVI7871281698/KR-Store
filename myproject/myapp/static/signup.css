@@ -1,0 +1,53 @@
+.signin{
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border: 1px solid black;
+    border-radius: 20px;
+    height: 520px;
+    width: 400px;
+    margin-left: 450px;
+    background-color: aliceblue;
+}
+.heading{
+    padding: 20px;
+    color: rgb(0, 89, 255);
+}
+.username{
+    margin-bottom: 20px;
+    width: 80%;
+    height: 40px;
+    gap: 10px;
+    font-size: 22px;
+}
+.password{
+    /* margin-bottom: 10px; */
+    width: 80%;
+    height: 40px;
+    font-size: 22px;
+}
+.file{
+    /* margin-bottom: 10px; */
+    width: 80%;
+    height: 40px;
+    font-size: 22px;
+}
+.buttontag{
+    margin-top: 20px;
+}
+button{
+    width: 80%;
+    height: 25%;
+    /* border-radius: 100px; */
+}
+a{
+    text-decoration: none;
+    font-size:medium;
+}
+.otherfields{
+    margin-top: 10px;
+    gap: 20px;
+}
+.sp{
+    color: black;
+}

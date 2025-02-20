@@ -1,0 +1,50 @@
+<!-- order_list.html -->
+<h2>Order List</h2>
+
+<table>
+    <tr>
+        <th>Order ID</th>
+        <th>Product Name</th>
+        <th>Quantity</th>
+        <th>Total Price</th>
+        <th>Status</th>
+        <th>Action</th>
+    </tr>
+    
+    {% for order in orders %}
+    <tr>
+        <td>{{ order.id }}</td>
+        <td>{{ order.product_name }}</td>
+        <td>{{ order.quantity }}</td>
+        <td>${{ order.total_price }}</td>
+        <td>
+            {% if request.user.is_superuser %}
+                <!-- Admin can update the status -->
+                <form method="POST" action="{% url 'update_order_status' order.id %}">
+                    {% csrf_token %}
+                    <select name="status" onchange="this.form.submit()">
+                        {% for value, label in status_choices %}
+                            <option value="{{ value }}" {% if order.status == value %}selected{% endif %}>
+                                {{ label }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </form>
+            {% else %}
+                <!-- Users can only see the status -->
+                {{ order.status }}
+            {% endif %}
+        </td>
+        <td>
+            {% if not request.user.is_superuser %}
+                <!-- User can cancel the order if it's not already 'Delivered' -->
+                {% if order.status != 'Delivered' %}
+                <a href="{% url 'cancel_order' order.id %}">
+                        <button>Cancel Order</button>
+                    </a>
+                {% endif %}
+            {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
