@@ -4,7 +4,6 @@ import datetime
 # Create your models here.
 class signup_page(models.Model):
     fname=models.CharField(max_length=20)
-    # lname=models.CharField(max_length=20)
     email=models.EmailField(max_length=50,primary_key=True)
     password=models.CharField(max_length=10)
     address = models.TextField(null=True, blank=True)
@@ -13,9 +12,6 @@ class signup_page(models.Model):
         message="Phone number must be in the format: '+999999999'. Up to 15 digits allowed."
     )
     mobile = models.CharField(validators=[phone_regex], max_length=15, blank=True, null=True)
-    # address = models.TextField(null=True, blank=True)
-    # file=models.ImageField(upload_to='uploads/',null=True)
-    # confirm_password=models.CharField(max_length=10)
 
 
 class Feedback(models.Model):
@@ -49,8 +45,7 @@ class Ordernow(models.Model):  # Order Model
     product_name = models.CharField(max_length=50,null=True)
     product_price = models.DecimalField(max_digits=10, decimal_places=2)
     total_price = models.DecimalField(max_digits=10, decimal_places=2, default=0.00) 
-    order = models.ForeignKey(add_to_cart, on_delete=models.CASCADE) 
-    # quantity = models.ForeignKey(add_to_cart, on_delete=models.CASCADE) 
+    order = models.ForeignKey(add_to_cart, on_delete=models.CASCADE)  
     order_date = models.DateTimeField(auto_now_add=True) 
     address = models.TextField(null=True, blank=True)
     status = models.CharField(
