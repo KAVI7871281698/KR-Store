@@ -74,17 +74,17 @@ def admin(request):
 @login_required
 def demarts(request):
     show=Demart.objects.filter(category='Ready to cook')
-    return render(request, 'demart.html', {'see':show,})
+    return render(request, 'demart.html', {'see':show})
 
 @login_required
 def demartstationary(request):
     show = Demart.objects.filter(category='stationary')
-    return render(request,'demartstationary.html',{'see':show,})
+    return render(request,'demartstationary.html',{'see':show})
 
 @login_required
 def skincares(request):
     show=Demart.objects.filter(category='skincare')
-    return render(request,'demart.html',{'see':show,})
+    return render(request,'demart.html',{'see':show})
 
 @login_required
 def about(request):
