@@ -1,0 +1,256 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #121212;
+    color: white;
+    text-align: center;
+}
+
+/* Navbar */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background:black;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    width: 95%;
+    padding-right: 20%;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links li {
+    display: inline;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.1rem;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: #ff6600;
+}
+
+/* Mobile Menu */
+.menu-toggle {
+    display: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: white;
+}
+
+/* Contact Section */
+#contact {
+    padding: 100px 20px 50px;
+    background: linear-gradient(to right, #1e1e1e, #292929);
+}
+
+.section-title {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    opacity: 0;
+    animation: fadeIn 1.5s ease-in-out forwards;
+}
+
+/* Contact Container */
+.contact-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 50px;
+    max-width: 900px;
+    margin: auto;
+}
+
+/* Contact Form */
+.contact-form {
+    flex: 1;
+    min-width: 300px;
+    padding: 20px;
+    background: #222;
+    border-radius: 10px;
+    animation: fadeInUp 1.5s ease-out forwards;
+}
+
+.contact-form h3 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    background: #333;
+    color: white;
+}
+
+.contact-form button {
+    background: #ff6600;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: 0.3s;
+}
+
+.contact-form button:hover {
+    background: #e65c00;
+}
+
+/* Contact Info */
+.contact-info {
+    flex: 1;
+    min-width: 300px;
+    padding: 20px;
+    background: #222;
+    border-radius: 10px;
+    animation: fadeInUp 1.5s ease-out forwards;
+}
+
+.contact-info h3 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+
+/* Social Icons */
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.icon {
+    font-size: 2rem;
+    text-decoration: none;
+    color: #ff6600;
+    transition: 0.3s;
+}
+
+.icon:hover {
+    color: white;
+    transform: scale(1.2);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .contact-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background: #1e1e1e;
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-links li {
+        display: block;
+        padding: 10px;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-active {
+        display: flex;
+    }
+}
+.dropdown-btn {
+    /* /* background-color: #3498db; */
+    background-color:black;
+    color: white;
+    padding: 10px 20px;
+    font-size: 25px;
+    font-family: cursive;
+    border: none;
+    cursor: pointer;
+    width: 100px;
+    height: 70px;
+    /* border-radius: 32px; */
+}
+
+/* The dropdown content (hidden by default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 150px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 10px 15px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color on hover */
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+/* Show the dropdown when hovering over the button */
+.dropdown:hover .dropdown-content {
+    display: block;
+}

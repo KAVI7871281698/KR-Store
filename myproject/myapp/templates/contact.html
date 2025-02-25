@@ -1,0 +1,66 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Me | Video Editor</title>
+    <link rel="stylesheet" href="{% static 'contact.css' %}">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav>
+        <div class="dropdown">
+            <button class="dropdown-btn">TimeLine</button>
+            <div class="dropdown-content">
+                <a href="/signin">Signin</a>
+                <a href="/signup">Signup</a>
+                <a href="/loggout">Logout</a>
+                {% if "admin7871@gmail.com" == request.session.email %}
+                <a href="/dashboard">Admin</a>
+                {% endif %}
+            </div>
+        </div>
+        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    </nav>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2 class="section-title">contact me</h2>
+        <div class="contact-container">
+            
+            <!-- Contact Form -->
+            <div class="contact-form">
+                <h3>Give Your Feedback</h3>
+                <form action="/contact" method="POST">
+                    {% csrf_token %} 
+                    <input type="text" name="name" placeholder="Your Name" required>
+                    <input type="email" name="email" placeholder="Your Email" required>
+                    <textarea name="feedback" rows="5" placeholder="Your Feedback" required></textarea>
+                    <button type="submit" class="btn">Submit Feedback</button>
+                </form>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="contact-info">
+                <h3>Let's Connect</h3>
+                <p><strong>Email:</strong> krstorer84@gmail.com</p>
+                <p><strong>Phone:</strong> 7871281698</p>
+                <p><strong>Location:</strong> Coimbatore,Tamilnadu,India</p>
+
+                <!-- Social Icons -->
+                <div class="social-icons">
+                    <a href="https://wa.me/7871281698" class="icon" target="_blank">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" width="30" height="50" >
+                    </a>
+                    
+                    <a href="mailto:your-krstorer84@gmail.com" class="icon">📩</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="{% static 'contact.js' %}"></script>
+</body>
+</html>

@@ -334,3 +334,12 @@ def report(request):
         'daily_amount':  daily_total_sales,
         'daily_orders':  daily_total_orders
     })
+
+def contact(request):
+    if request.method=='POST':
+        name = request.POST['name']
+        email = request.POST['email']
+        feedback = request.POST['feedback']
+        saved = Feedback(name=name,email=email,feedback=feedback)
+        saved.save()
+    return render(request,'contact.html')
