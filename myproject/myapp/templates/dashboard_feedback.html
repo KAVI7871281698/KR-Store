@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Customers Page</title>
-    <link rel="stylesheet" href="{% static 'dashboard_customer.css' %}">
+    <title>Reports Page</title>
+    <link rel="stylesheet" href="{% static 'report.css' %}">
 </head>
 <body>
     <div class="sidebar">
@@ -17,28 +17,26 @@
             <li><a href="/dashboard_customer">Customers</a></li>
             <li><a href="/report">Reports</a></li>
             <li><a href="/dashboard_feedback">Feeback</a></li>
+            <!-- <li><a href="/admin_loggout">Logout</a></li> -->
             <!-- <li><a href="/setting">Settings</a></li> -->
         </ul>
     </div>
     <div class="main-content">
         <header>
-            <h1>Customers</h1>
+            <h1>Customer Feedbacks</h1>
         </header>
         <section class="table">
-            <h2>Customer List</h2>
             <table>
                 <tr>
                     <th>Name</th>
                     <th>Email</th>
-                    <th>Phone</th>
-                    <th>address</th>
+                    <th>Feedback</th>
                 </tr>
-                {% for i in see %}
+                {% for i in datas %}
                 <tr>
-                    <td>{{ i.fname }}</td>
+                    <td>{{ i.name }}</td>
                     <td>{{ i.email }}</td>
-                    <td>{{ i.address }}</td>
-                    <td>{{ i.mobile }}</td>
+                    <td>{{ i.feedback }}</td>
                 </tr>
                 {% endfor %}
             </table>

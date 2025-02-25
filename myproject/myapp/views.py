@@ -97,10 +97,6 @@ def about(request):
         saved.save()
     return render(request,'about.html')
 
-# @login_required
-def feedback(request):
-    view=Feedback.objects.all()
-    return render(request,'feedback.html',{'datas':view})
 
 @login_required
 def cleaner(request):
@@ -335,6 +331,10 @@ def report(request):
         'daily_orders':  daily_total_orders
     })
 
+def feedback(request):
+    view = Feedback.objects.all()
+    return render(request,'dashboard_feedback.html',{'datas':view})
+
 def contact(request):
     if request.method=='POST':
         name = request.POST['name']
@@ -343,3 +343,5 @@ def contact(request):
         saved = Feedback(name=name,email=email,feedback=feedback)
         saved.save()
     return render(request,'contact.html')
+
+
