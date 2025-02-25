@@ -1,97 +1,170 @@
-.navbar1{
-    position: fixed;
-    object-fit: cover;
-    /* position: absolute; */
-    background-color: white;
-    width: 100%;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
 }
-.demartlogo{
+
+body {
+    background-color: #f8f9fa;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #007bff;
+    padding: 10px 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.logo img {
+    width: 130px;
     height: 90px;
-    width: 170px;
-    padding-right: 30px;
-    padding-left: 20px;
 }
-.cartlogo{
-    width: 70px;
-    height: 70px;
-    margin-left: 30px;
-    padding: 5px;
-}
-.cartlogo:hover{
-    background-color: orange;
-    transition: 0.6s;
-    border-radius: 10px;
-}
-.demartproducts{
-    margin-left:20px;
-    margin-right:25px;
-    text-decoration: none;
-    padding: 5px;
-    font-size: 15px;
-    color: black;
-}
-.demartproducts:hover{
-    background-color:orange;
-    color: white;
-    font-size: 18px;
-    transition: 0.6s linear;
-    border-radius: 5px;
-}
-.inputsearch{
-    width: 160px;
-    padding: 0;
-}
-.inputbutton{
-    width: 110px;
-    height: 30px;
-    padding: 0;
-    padding-right: 3px;
-    background-color: orange;
-    color: white;
-}
-a{
-    text-decoration: none;
-    color: black;
-}
-.section2{
+
+.searchbar {
     display: flex;
-    flex-flow: row wrap;
-    gap: 15px;
-    /* margin-left: 30px; */
+    align-items: center;
 }
-.productitems{
+
+.inputsearch {
+    padding: 8px;
     width: 200px;
-    margin-top: 150px;
-    margin-left: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
-.productname{
-    margin-left: 30px;
-    margin-top: 15px;
-    margin-bottom: 30px;
+
+.inputbutton {
+    padding: 8px 12px;
+    border: none;
+    background: #28a745;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 5px;
+    transition: 0.3s;
 }
-.price{
-    margin-left: 30px;
-    padding-top: 50px;
-    padding-bottom: 10px;
+
+.inputbutton:hover {
+    background: #218838;
 }
-.cart{
-    margin-left: 30px;
-    background-color: orange;
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+.nav-links li {
+    margin: 0 10px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+.hamburger {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
     color: white;
 }
-.section3{
+
+.section2 {
     display: flex;
-    gap: 160px;
-    margin-left: 30px;
-    margin-bottom: 80px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
 }
-.quantity{
-    margin-left: 40px;
-    font-size: large;
+
+.products {
+    background: white;
+    padding: 15px;
+    margin: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: 0.3s;
+    width: 220px;
 }
-.quantity-value{
-    width: 40px;
-    height: 25px;
-    background-color: rgba(245, 245, 245, 0.063);
+
+.products:hover {
+    transform: scale(1.05);
+}
+
+.productitems {
+    width: 100%;
+    height: 180px;
     border-radius: 5px;
+}
+
+.productname {
+    font-weight: bold;
+    display: block;
+    margin: 5px 0;
+}
+
+.price {
+    color: #007bff;
+    font-size: 14px;
+    font-weight: bold;
+    display: block;
+}
+
+.cart {
+    background: #ff9800;
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.cart:hover {
+    background: #e68900;
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .searchbar {
+        width: 100%;
+        margin-top: 10px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .inputsearch {
+        width: 80%;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        width: 100%;
+        display: none;
+    }
+
+    .nav-links li {
+        margin: 5px 0;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .products {
+        width: 100%;
+        max-width: 300px;
+    }
 }

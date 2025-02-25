@@ -2,7 +2,6 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KR Store</title>
@@ -16,45 +15,46 @@
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.css' integrity='sha512-8BU3emz11z9iF75b10oPjjpamM4Mz23yQFQymbtwyPN3mNWHxpgeqyrYnkIUP6A8KyAj5k2p3MiYLtYqew7gIw==' crossorigin='anonymous'/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
     <link rel="stylesheet" href="{% static 'spencers.css' %}">
-    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
 </head>
 <body>
 
      <!-- ....navbar start... -->
 
-    <div class="section1">
-        <nav class="navbar1">
-            <img src="{% static 'img/spencers.jpg' %}" class="demartlogo">
-            <a href="/spencers" class="demartproducts">Personal Care</a>
-            <a href="/kitchen" class="demartproducts">Home & Kitchen</a>
-            <a href="/electricals" class="demartproducts">Electricals & Electronics</a>
-            <!-- <a href="#" class="demartproducts">Cleaners</a>
-            <a href="#" class="demartproducts">Chocolates</a> -->
-            <label for="search" class="search">
-                <input type="text" id="search" name="search" placeholder="     Search" class="inputsearch">
-                <button type="submit" class="inputbutton">Search</button>
-            </label>
-            <a href="/add_to_cart">
-                <img src="{% static 'img/cart logo.png'%}" class="cartlogo">
-            </a>
+     <div class="section1">
+        <nav class="navbar">
+          <div class="logo">
+            <img src="{% static 'img/spencers.jpg' %}" style="width: 130px; height: 90px;" class="logo">
+          </div>
+          <div class="searchbar">
+            <input type="text" id="search" name="search" placeholder="  Search" class="inputsearch">
+            <button type="submit" class="inputbutton">Search</button>
+          </div>
+          <ul class="nav-links">
+            <li class="category"><a href="/spencers">Personal Care</a></li>
+            <li class="category"><a href="/electricals">electricals</a></li>
+            <li class="category"><a href="/kitchen">Kitchen</a></li>
+            <li><a href="/add_to_cart"> <img src="{% static 'img/cart logo.png' %}" style="width: 50px; ">
+            </a></li>
+          </ul>
+          <div class="hamburger" onclick="toggleMenu()">
+            &#9776;
+          </div>
         </nav>
+      <script src="{% static 'exam.js' %}"></script>
+</div>
+<div class="section2">
+    {% for i in see %}
+    <div class="products">
+        <img src="{{ i.demart_img.url }}" class="productitems"><br>
+        <span class="productname">Demart</span><br>
+        <span class="productname">{{ i.product_id }}</span><br>
+        <span class="productname">{{ i.product_name }}</span><br>
+        <span class="price">{{ i.category }}</span><br>
+        <span class="price">Stock-{{ i.stock }}</span><br>
+        <span class="price">Price-{{ i.price }}</span><br>
+        <a href="/cart/{{ i.id }}/"><button type="submit" class="cart">🛒 ADD TO CART</button></a>
     </div>
-    <div class="container">
-        <div class="row">
-        {% for i in see %}
-        <div class="col">
-            <img src="{{ i.demart_img.url }}" class="productitems"><br>
-            <span class="productname">Demart</span><br>
-            <span class="productname">{{ i.product_id }}</span><br>
-            <span class="productname">{{ i.product_name }}</span><br>
-            <span class="price">{{ i.category }}</span><br>
-            <span class="price">Price-{{ i.price }}</span><br>
-            <label for="quantity" class="quantity">Quantity:
-            <input type="number" id="quantity" name="quantity" min="1" value="1"  onchange="updatePrice()"class="quantity-value"></label><br> 
-            <button type="submit" class="cart">🛒 ADD TO CART</button>
-        </div>
-        {% endfor %}
-        </div>
+    {% endfor %}
         <!-- <div class="personalcare">
             <a href="#"><img src="{% static 'img/cajun.webp'%}" class="productitems"><br>
                 <span class="productname">spencers</span><br>
