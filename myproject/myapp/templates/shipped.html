@@ -14,7 +14,6 @@
 
 <table>
     <tr>
-        <th>Order ID</th>
         <th>Product Name</th>
         <th>Quantity</th>
         <th>Total Price</th>
@@ -23,7 +22,6 @@
     </tr>
     {% for ship in orders %}
     <tr>
-        <td>{{ ship.order_id }}</td>
         <td>
             <img src="{{ ship.order.product.demart_img.url }}" alt="Wireless Headphones" class="product-img">
             <p>{{ ship.product_name }}</p>
