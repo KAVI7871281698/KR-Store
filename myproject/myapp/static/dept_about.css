@@ -1,0 +1,99 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+.background-animation {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    background: linear-gradient(45deg, #ffcccc, #ffe5cc, #ffffcc, #e5ffcc, #ccffcc, #ccffe5, #cce5ff, #ccccff, #e5ccff, #ffccff);
+    background-size: 400% 400%;
+    animation: gradientBG 10s ease infinite;
+}
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: rgba(51, 51, 51, 0.8);
+    color: white;
+}
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+.nav-links li {
+    margin: 0 15px;
+}
+.nav-links a {
+    color: white;
+    text-decoration: none;
+}
+.menu-toggle {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+.brand-logo {
+    max-width: 100%;
+    height: auto;
+}
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 1.5s forwards;
+}
+.slide-in {
+    opacity: 0;
+    transform: translateX(-50px);
+    animation: slideIn 1s forwards;
+}
+.hover-zoom img {
+    transition: transform 0.3s ease-in-out;
+}
+.hover-zoom img:hover {
+    transform: scale(1.1);
+}
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+@keyframes slideIn {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+@media screen and (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        background-color: rgba(51, 51, 51, 0.8);
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        text-align: center;
+    }
+    .nav-links li {
+        margin: 10px 0;
+    }
+    .nav-links.active {
+        display: flex;
+    }
+}
