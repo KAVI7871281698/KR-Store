@@ -88,15 +88,7 @@ def skincares(request):
 
 @login_required
 def about(request):
-    if request.method=='POST':
-        request.session['fname']
-        name=request.session['fname']
-        email1=request.session['email']
-        feedback=request.POST['feedback']
-        saved=Feedback(name=name,email=email1,feedback=feedback)
-        saved.save()
     return render(request,'about.html')
-
 
 @login_required
 def cleaner(request):
@@ -131,9 +123,15 @@ def loggout(request):
 @login_required
 def product(request):
     show=Demart.objects.filter(brand_name='fruits',category='fruits')
-    print(show)
-    print("function")
-    return render(request,'product.html')
+    return render(request,'product.html',{'see':show})
+
+def vegtables(request):
+    show=Demart.objects.filter(brand_name='vegatables',category='vegtables')
+    return render(request,'vegtables.html',{'see':show})
+
+def grocery(request):
+    show=Demart.objects.filter(brand_name='grocery',category='grocery')
+    return render(request,'grocery.html',{'see':show})
 
 def carts(request, id):
     sample = get_object_or_404(Demart, id=id)  

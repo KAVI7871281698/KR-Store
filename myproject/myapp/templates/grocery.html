@@ -32,11 +32,9 @@
                 <button type="submit" class="inputbutton">Search</button>
               </div> -->
               <ul class="nav-links">
-                <li class="category"><a href="/demart">Ready To Cook</a></li>
-                <li class="category"><a href="/skincare">Skincare</a></li>
-                <li class="category"><a href="/demartstationary">Stationary</a></li>
-                <li class="category"><a href="/cleaner">Cleaners</a></li>
-                <li class="category"><a href="/chocolates">Chocolates</a></li>
+                <li class="category"><a href="/product">Furits</a></li>
+                <li class="category"><a href="/vegtables">Vegtables</a></li>
+                <li class="category"><a href="/grocery">Grocery</a></li>
                 <li><a href="/add_to_cart"> <img src="{% static 'img/cart logo.png' %}" style="width: 50px; ">
                 </a></li>
               </ul>
@@ -51,7 +49,7 @@
         {% for i in see %}
         <div class="products">
             <img src="{{ i.demart_img.url }}" class="productitems"><br>
-            <span class="productname">Demart</span><br>
+            <span class="productname">{{ i.brand_name }}</span><br>
             <span class="productname">{{ i.product_id }}</span><br>
             <span class="productname">{{ i.product_name }}</span><br>
             <span class="price">{{ i.category }}</span><br>
