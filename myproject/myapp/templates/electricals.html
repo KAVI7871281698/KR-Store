@@ -32,11 +32,11 @@
           <ul class="nav-links">
             <li class="category"><a href="/spencers">Personal Care</a></li>
             <li class="category"><a href="/electricals">electricals</a></li>
-            <li class="category"><a href="/kitchen">Kitchen</a></li>
+            <li class="category"><a href="/kitchen">Home & Kitchen</a></li>
             <li><a href="/add_to_cart"> <img src="{% static 'img/cart logo.png' %}" style="width: 50px; ">
             </a></li>
           </ul>
-          <div class="hamburger" onclick="toggleMenu()">
+          <div class="hamburger" onclick="toggleMenu()" style="color: black;">
             &#9776;
           </div>
         </nav>
@@ -55,82 +55,6 @@
         <a href="/cart/{{ i.id }}/"><button type="submit" class="cart">🛒 ADD TO CART</button></a>
     </div>
     {% endfor %}
-        <!-- <div class="electricals">
-            <a href="#"><img src="{% static 'img/everday battery.webp'%}" class="productitems"><br>
-                <span class="productname">spencers</span><br>
-                <span class="productname">Everyday 1012</span><br>
-                <span class="price">price - ₹70</span><br></a>
-                <label for="quantity" class="quantity">Quantity:
-                <input type="number" id="quantity" name="quantity" min="1" value="1"  onchange="updatePrice()"class="quantity-value"></label><br> 
-                <button type="submit" class="cart">🛒 ADD TO CART</button>
-        </div>
-        <div class="electricals">
-            <a href="#"><img src="{% static 'img/duracwell.webp'%}" class="productitems"><br>
-                <span class="productname">spencers</span><br>
-                <span class="productname">Duracel Ultra</span><br>
-                <span class="price">price - ₹90</span><br></a>
-                <label for="quantity" class="quantity">Quantity:
-                <input type="number" id="quantity" name="quantity" min="1" value="1"  onchange="updatePrice()"class="quantity-value"></label><br> 
-                <button type="submit" class="cart">🛒 ADD TO CART</button>
-        </div>
-    </div>
-    <div class="section3">
-        <div class="electricals">
-            <a href="#"><img src="{% static 'img/water jug.webp'%}" class="productitems"><br>
-                <span class="productname">spencers</span><br>
-                <span class="productname">Electric Rice Cooker</span><br>
-                <span class="price">price - ₹1200</span><br></a>
-                <label for="quantity" class="quantity">Quantity:
-                <input type="number" id="quantity" name="quantity" min="1" value="1"  onchange="updatePrice()"class="quantity-value"></label><br> 
-                <button type="submit" class="cart">🛒 ADD TO CART</button>
-        </div>
-        <div class="electricals">
-            <a href="#"><img src="{% static 'img/portable.webp'%}" class="productitems"><br>
-                <span class="productname">spencers</span><br>
-                <span class="productname">Portable Yogurt Maker</span><br>
-                <span class="price">price - ₹600</span><br></a>
-                <label for="quantity" class="quantity">Quantity:
-                <input type="number" id="quantity" name="quantity" min="1" value="1"  onchange="updatePrice()"class="quantity-value"></label><br> 
-                <button type="submit" class="cart">🛒 ADD TO CART</button>
-        </div>
-        <div class="electricals">
-            <a href="#"><img src="{% static 'img/mixer.webp'%}" class="productitems"><br>
-                <span class="productname">spencers</span><br>
-                <span class="productname">NV Mixer</span><br>
-                <span class="price">price - ₹4000</span><br></a>
-                <label for="quantity" class="quantity">Quantity:
-                <input type="number" id="quantity" name="quantity" min="1" value="1"  onchange="updatePrice()"class="quantity-value"></label><br> 
-                <button type="submit" class="cart">🛒 ADD TO CART</button>
-        </div>
-    </div>
-    <div class="section4">
-        <div class="electricals">
-            <a href="#"><img src="{% static 'img/heater.webp'%}" class="productitems"><br>
-                <span class="productname">spencers</span><br>
-                <span class="productname">Star Water Heater</span><br>
-                <span class="price">price - ₹0600</span><br></a>
-                <label for="quantity" class="quantity">Quantity:
-                <input type="number" id="quantity" name="quantity" min="1" value="1"  onchange="updatePrice()"class="quantity-value"></label><br> 
-                <button type="submit" class="cart">🛒 ADD TO CART</button>
-        </div>
-        <div class="electricals">
-            <a href="#"><img src="{% static 'img/toaster.webp'%}" class="productitems"><br>
-                <span class="productname">spencers</span><br>
-                <span class="productname">ATX-3 pop up Toaster</span><br>
-                <span class="price">price - ₹1500</span><br></a>
-                <label for="quantity" class="quantity">Quantity:
-                <input type="number" id="quantity" name="quantity" min="1" value="1"  onchange="updatePrice()"class="quantity-value"></label><br> 
-                <button type="submit" class="cart">🛒 ADD TO CART</button>
-        </div>
-        <div class="electricals">
-            <a href="#"><img src="{% static 'img/tefal.webp'%}" class="productitems"><br>
-                <span class="productname">spencers</span><br>
-                <span class="productname">
-                    Tefal Essential Steam Irons</span><br>
-                <span class="price">price - ₹1000</span><br></a>
-                <label for="quantity" class="quantity">Quantity:
-                <input type="number" id="quantity" name="quantity" min="1" value="1"  onchange="updatePrice()"class="quantity-value"></label><br> 
-                <button type="submit" class="cart">🛒 ADD TO CART</button>
-        </div> -->
-    </div>
-    </body>
+</div>
+</body>
+</html>

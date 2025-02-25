@@ -32,11 +32,11 @@
           <ul class="nav-links">
             <li class="category"><a href="/spencers">Personal Care</a></li>
             <li class="category"><a href="/electricals">electricals</a></li>
-            <li class="category"><a href="/kitchen">Kitchen</a></li>
+            <li class="category"><a href="/kitchen">Home & Kitchen</a></li>
             <li><a href="/add_to_cart"> <img src="{% static 'img/cart logo.png' %}" style="width: 50px; ">
             </a></li>
           </ul>
-          <div class="hamburger" onclick="toggleMenu()">
+          <div class="hamburger" onclick="toggleMenu()" style="color: black;">
             &#9776;
           </div>
         </nav>
@@ -55,58 +55,6 @@
         <a href="/cart/{{ i.id }}/"><button type="submit" class="cart">🛒 ADD TO CART</button></a>
     </div>
     {% endfor %}
-        <!-- <div class="home&kitchen">
-            <a href="#"><img src="{% static 'img/steel f.webp'%}" class="productitems"><br>
-                <span class="productname">spencers</span><br>
-                <span class="productname">                   
-Essential Stainless Steel 22Cm</span><br>
-                <span class="price">price - ₹200</span><br></a>
-                <label for="quantity" class="quantity">Quantity:
-                <input type="number" id="quantity" name="quantity" min="1" value="1"  onchange="updatePrice()"class="quantity-value"></label><br> 
-                <button type="submit" class="cart">🛒 ADD TO CART</button>
-        </div>
-        <div class="home&kitchen">
-            <a href="#"><img src="{% static 'img/pigeon.webp'%}" class="productitems"><br>
-                <span class="productname">spencers</span><br>
-                <span class="productname">                   
-                    Pressure cooker</span><br>
-                <span class="price">price - ₹2000</span><br></a>
-                <label for="quantity" class="quantity">Quantity:
-                <input type="number" id="quantity" name="quantity" min="1" value="1"  onchange="updatePrice()"class="quantity-value"></label><br> 
-                <button type="submit" class="cart">🛒 ADD TO CART</button>
-        </div>
-    </div>
-    <div class="section3">
-        <div class="home&kitchen">
-            <a href="#"><img src="{% static 'img/hot box.webp'%}" class="productitems"><br>
-                <span class="productname">spencers</span><br>
-                <span class="productname">                   
-                    Hot Box</span><br>
-                <span class="price">price - ₹200</span><br></a>
-                <label for="quantity" class="quantity">Quantity:
-                <input type="number" id="quantity" name="quantity" min="1" value="1"  onchange="updatePrice()"class="quantity-value"></label><br> 
-                <button type="submit" class="cart">🛒 ADD TO CART</button>
-        </div>
-        <div class="home&kitchen">
-            <a href="#"><img src="{% static 'img/sachet.webp'%}" class="productitems"><br>
-                <span class="productname">spencers</span><br>
-                <span class="productname">                                    
-Ripple F Sachet-Sandal</span><br>
-                <span class="price">price - ₹50</span><br></a> 
-                <label for="quantity" class="quantity">Quantity:
-                <input type="number" id="quantity" name="quantity" min="1" value="1"  onchange="updatePrice()"class="quantity-value"></label><br>
-                <button type="submit" class="cart">🛒 ADD TO CART</button>
-        </div>
-        <div class="home&kitchen">
-            <a href="#"><img src="{% static 'img/bedsh.webp'%}" class="productitems"><br>
-                <span class="productname">spencers</span><br>
-                <span class="productname">Double Bedsheet-224X254Cm
-                </span><br>
-                <span class="price">price - ₹1200</span><br></a>
-                <label for="quantity" class="quantity">Quantity:
-                <input type="number" id="quantity" name="quantity" min="1" value="1"  onchange="updatePrice()"class="quantity-value"></label><br> 
-                <button type="submit" class="cart">🛒 ADD TO CART</button>
-        </div> -->
-    </div>
-    </body>
-    <>
+</div>
+</body>
+</html>

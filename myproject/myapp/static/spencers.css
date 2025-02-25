@@ -13,7 +13,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: #007bff;
+    background: #e2e6e9;
     padding: 10px 20px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
@@ -62,7 +62,7 @@ body {
 
 .nav-links a {
     text-decoration: none;
-    color: white;
+    color: #101010;
     font-weight: bold;
 }
 
