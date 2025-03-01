@@ -125,14 +125,17 @@ def product(request):
     show=Demart.objects.filter(brand_name='fruits',category='fruits')
     return render(request,'product.html',{'see':show})
 
+@login_required
 def vegtables(request):
     show=Demart.objects.filter(brand_name='vegatables',category='vegtables')
     return render(request,'vegtables.html',{'see':show})
 
+@login_required
 def grocery(request):
     show=Demart.objects.filter(brand_name='grocery',category='grocery')
     return render(request,'grocery.html',{'see':show})
 
+@login_required
 def carts(request, id):
     sample = get_object_or_404(Demart, id=id)  
     email = request.session.get('email')  
@@ -150,16 +153,19 @@ def carts(request, id):
     # Fallback to previous page or default page
     return redirect(request.META.get('HTTP_REFERER', '/product'))  
 
+@login_required
 def add(request):
     email=request.session.get('email')
     show = add_to_cart.objects.filter(email=email)
     return render(request,'add_to_cart.html',{'carts':show})
 
+@login_required
 def delete(request,id):
     delete_items = add_to_cart.objects.get(id=id)
     delete_items.delete()
     return redirect('add_to_cart')
 
+@login_required
 def order_now(request,id, ids):
     order_details = Demart.objects.get(id=id)
     order_details2 = add_to_cart.objects.get(id=ids)
@@ -169,23 +175,33 @@ def order_now(request,id, ids):
     see = add_to_cart.objects.filter(email=email).last()
     return render(request,'order_now.html',{'ordered':order_details2})
 
+@login_required
 def increase_quantity(request, id):
     item = get_object_or_404(add_to_cart, id=id)
     item.quantity += 1 
-    item.total_price = item.quantity*item.product.price
+
+    # Update total price only if quantity > 1, otherwise set to product price
+    item.total_price = item.quantity * item.product.price if item.quantity > 1 else item.product.price
+    
     item.save()
     return redirect('add_to_cart')
 
+@login_required
 def decrease_quantity(request, id):
     item = get_object_or_404(add_to_cart, id=id)
+    
     if item.quantity > 1:
         item.quantity -= 1  
-        item.total_price = item.quantity*item.product.price
+        item.total_price = item.quantity * item.product.price
         item.save()
     else:
-        item.save() 
+        # If quantity is 1, set total_price to just product price
+        item.total_price = item.product.price
+        item.save()
+
     return redirect('add_to_cart')
 
+@login_required
 def order_confirm(request,id):
     if request.method == 'POST':
         user_address = request.POST['address']
@@ -251,10 +267,12 @@ STATUS_CHOICES = [
     ('Cancelled', 'Cancelled'),
 ]
 
+@login_required
 def order_list(request):
     orders = Ordernow.objects.all()  # Get all orders
     return render(request, 'order_list.html', {'orders': orders, 'status_choices': STATUS_CHOICES})
 
+@login_required
 def update_order_status(request, id):
     order = get_object_or_404(Ordernow, id=id)
     
@@ -268,6 +286,7 @@ def update_order_status(request, id):
     
     return redirect('order_list')  # Redirect to the order list
 
+@login_required
 def cancel_order(request, id):
     order = get_object_or_404(Ordernow, id=id)
 
@@ -278,21 +297,25 @@ def cancel_order(request, id):
     
     return redirect('order_list')
 
+@login_required
 def shipped(request):
     user_email = request.session.get('email')
     orders = Ordernow.objects.filter(email=user_email)  # Get all orders
     return render(request, 'shipped.html', {'orders': orders})
 
+@login_required
 def dashboard(request):
     recent_order = Ordernow.objects.all().order_by('-id')[:3]
     total_sales = Ordernow.objects.aggregate(Sum('total_price'))['total_price__sum'] or 0   # Number Sales 
     total_orders = Ordernow.objects.count() #Number of Product on sale
     return render(request,'dashboard.html',{'recent_order':recent_order,'total_sales':total_sales,'total_orders':total_orders})
 
+@login_required
 def dashboard_customer(request):
     customer = signup_page.objects.all()
     return render(request,'dashboard_customer.html',{'see':customer})
 
+@login_required
 def dashboard_product(request):
     product = Demart.objects.all()
     return render(request,'dashboard_product.html',{'product_items':product})
@@ -301,6 +324,7 @@ def dashboard_order(request):
     orders = Ordernow.objects.all()
     return render(request,'dashboard_order.html',{'order_item':orders})
 
+@login_required
 def report(request):
     # Get the current day and month and year
     current_month = datetime.datetime.now().strftime('%B')
@@ -338,10 +362,12 @@ def report(request):
         'daily_orders':  daily_total_orders
     })
 
+@login_required
 def feedback(request):
     view = Feedback.objects.all()
     return render(request,'dashboard_feedback.html',{'datas':view})
 
+@login_required
 def contact(request):
     if request.method=='POST':
         name = request.POST['name']

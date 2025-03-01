@@ -54,8 +54,8 @@
             </tbody>
         </table>
         <div class="cart-total">
-            <h2>Total: ₹{{ item.total_price }}</h2>
-           <a href="/order_now/{{ item.product.id }}/{{ item.id }}/"> <button class="checkout">Order Now</button></a>
+            <h2>Total: ₹{% if item.quantity > 1 %}{{ item.total_price }}{% else %}{{ item.product.price }}{% endif %}</h2>
+            <a href="/order_now/{{ item.product.id }}/{{ item.id }}/"><button class="checkout">Order Now</button></a>
         </div>
     </div>
     {% endfor %}
