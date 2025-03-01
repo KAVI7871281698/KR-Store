@@ -41,7 +41,7 @@
                     <td><img src="{{ item.product.demart_img.url }}" alt="Product Image"></td>
                     <td>{{ item.product.product_id}}</td>
                     <td>{{ item.product.product_name}}</td>
-                    <td>${{ item.product.price}}</td>
+                    <td>₹{{ item.product.price}}</td>
                     <!-- <td>{{ item.total_price }}</td> -->
                     <td>
                     <a href="{% url 'decrease_quantity' item.id %}"><button>-</button></a>
@@ -54,7 +54,7 @@
             </tbody>
         </table>
         <div class="cart-total">
-            <h2>Total: ${{ item.total_price }}</h2>
+            <h2>Total: ₹{{ item.total_price }}</h2>
            <a href="/order_now/{{ item.product.id }}/{{ item.id }}/"> <button class="checkout">Order Now</button></a>
         </div>
     </div>

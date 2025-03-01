@@ -1,5 +1,5 @@
 from django.conf import settings
-from django.shortcuts import render,redirect,get_object_or_404
+from django.shortcuts import render,redirect,get_object_or_404,HttpResponse
 from .models import signup_page,Feedback,Demart,add_to_cart,Ordernow
 from django.contrib import messages
 from functools import wraps
@@ -350,5 +350,3 @@ def contact(request):
         saved = Feedback(name=name,email=email,feedback=feedback)
         saved.save()
     return render(request,'contact.html')
-
-
