@@ -139,7 +139,16 @@ def carts(request, id):
     # Save product to the cart
     saved = add_to_cart(product=sample, email=email)
     saved.save()
-    return redirect('demart')  
+
+    # Check for multiple possible redirect pages
+    possible_pages = ['spencers', 'product', 'demarts', 'demartstationary', 'skincares']
+    
+    for page in possible_pages:
+        if request.GET.get(page):  # If any of these is found in the GET parameters
+            return redirect(request.GET.get(page))
+
+    # Fallback to previous page or default page
+    return redirect(request.META.get('HTTP_REFERER', '/product'))  
 
 def add(request):
     email=request.session.get('email')
