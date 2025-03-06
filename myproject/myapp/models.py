@@ -41,7 +41,7 @@ class Ordernow(models.Model):  # Order Model
     name=models.CharField(max_length=20, null=True)
     email = models.CharField(max_length=50, null=True)
     quantity = models.IntegerField(default=1)
-    demart_img = models.ImageField(upload_to='uploads/',null=True)
+    product_img = models.ImageField(upload_to='uploads/',null=True)
     product_name = models.CharField(max_length=50,null=True)
     product_price = models.DecimalField(max_digits=10, decimal_places=2)
     total_price = models.DecimalField(max_digits=10, decimal_places=2, default=0.00) 
