@@ -320,6 +320,7 @@ def dashboard_product(request):
     product = Demart.objects.all()
     return render(request,'dashboard_product.html',{'product_items':product})
 
+@login_required
 def dashboard_order(request):
     orders = Ordernow.objects.all()
     return render(request,'dashboard_order.html',{'order_item':orders})
