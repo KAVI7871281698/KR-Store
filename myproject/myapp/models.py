@@ -29,9 +29,7 @@ class Demart(models.Model):
     demart_img = models.ImageField(upload_to='uploads/')
 
 class add_to_cart(models.Model):
-    # ForeignKey referencing the demart model
     product = models.ForeignKey(Demart, on_delete=models.CASCADE)  # Foreign key for product_id
-    # Other fields in the add_to_cart model
     email = models.CharField(max_length=50, null=True)
     quantity = models.IntegerField(default=1)
     total_price = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)  
@@ -55,10 +53,5 @@ class Ordernow(models.Model):  # Order Model
     )
     order_month = models.CharField(max_length=10, default=datetime.datetime.now().strftime('%B'), editable=False)  # Example: "February"
     order_year = models.IntegerField(default=datetime.datetime.now().year, editable=False)  # Example: 2025
-
-
-
-
-
 
 
