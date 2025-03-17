@@ -20,8 +20,11 @@ def login_required(f):
             return redirect('signin')
         return f(request,*args,**kwargs)
     return wrapped
-        
 
+def landing_page(request):
+    return render(request,'landing_page.html')
+
+@login_required
 def signup(request):
     if request.method=='POST':
         fname=request.POST['fname']
@@ -44,7 +47,7 @@ def signup(request):
         return redirect('signin')
     
     return render(request, 'signup.html')
-
+@login_required
 def signin(request):
     if request.method=='POST':
         email=request.POST['email']
