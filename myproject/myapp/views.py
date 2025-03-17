@@ -178,12 +178,17 @@ def order_now(request,id, ids):
 @login_required
 def increase_quantity(request, id):
     item = get_object_or_404(add_to_cart, id=id)
+    
+    # Increase the quantity by 1
     item.quantity += 1 
 
-    # Update total price only if quantity > 1, otherwise set to product price
-    item.total_price = item.quantity * item.product.price if item.quantity > 1 else item.product.price
+    # Update the total price based on the updated quantity
+    item.total_price = item.quantity * item.product.price
     
+    # Save the changes to the database
     item.save()
+    
+    # Redirect to the 'add_to_cart' page
     return redirect('add_to_cart')
 
 @login_required
@@ -191,13 +196,14 @@ def decrease_quantity(request, id):
     item = get_object_or_404(add_to_cart, id=id)
     
     if item.quantity > 1:
-        item.quantity -= 1  
+        # Decrease quantity by 1
+        item.quantity -= 1
+        # Update the total price based on the new quantity
         item.total_price = item.quantity * item.product.price
         item.save()
     else:
-        # If quantity is 1, set total_price to just product price
-        item.total_price = item.product.price
-        item.save()
+        # Optionally, you can delete the item if quantity reaches 1 and user wants to decrease
+        item.delete()
 
     return redirect('add_to_cart')
 
@@ -213,7 +219,7 @@ def order_confirm(request,id):
         user_quantity = confirm_order.quantity
         user_email = request.session.get('email')
         user_name = request.session.get('fname')
-        store = Ordernow(order=confirm_order,address=user_address,name=user_name,product_price=user_product_price,email=user_email,quantity=user_quantity,product_name=user_product_name,total_price=user_total_price,demart_img=user_img)
+        store = Ordernow(order=confirm_order,address=user_address,name=user_name,product_price=user_product_price,email=user_email,quantity=user_quantity,product_name=user_product_name,total_price=user_total_price,product_img=user_img)
         store.save()
         
                 # Prepare email
@@ -338,7 +344,7 @@ def report(request):
     monthly_orders = Ordernow.objects.filter(order_month=current_month, order_year=current_year)
 
     # Calculate total amount for the current month
-    total_amount = monthly_orders.aggregate(total_amount =Sum('total_price'))['total_amount'] or 0
+    total_amount = monthly_orders.aggregate(Sum('total_price'))['total_price__sum'] or 0
 
     # Calculate the number of order sales on that month
     total_orders = monthly_orders.count()
@@ -347,7 +353,7 @@ def report(request):
     daily_orders = Ordernow.objects.filter(order_date=selected_date)
 
     #Calculate the total amount in particular day
-    daily_total_sales = daily_orders.aggregate(total =Sum('total_price'))['total'] or 0
+    total = daily_orders.aggregate(total =Sum('total_price'))['total'] or 0
 
     #Calculate the number of Orders in particular day
     daily_total_orders = daily_orders.count()
@@ -359,7 +365,7 @@ def report(request):
         'year': current_year,
         'orders': total_orders,
         'selected_date': selected_date,
-        'daily_amount':  daily_total_sales,
+        'daily_amount':  total,
         'daily_orders':  daily_total_orders
     })
 
