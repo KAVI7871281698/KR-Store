@@ -130,7 +130,7 @@ def product(request):
 
 @login_required
 def vegtables(request):
-    show=Demart.objects.filter(brand_name='vegatables',category='vegtables')
+    show=Demart.objects.filter(brand_name='vegtables',category='vegtables')
     return render(request,'vegtables.html',{'see':show})
 
 @login_required
