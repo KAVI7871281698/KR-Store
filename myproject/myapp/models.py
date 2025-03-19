@@ -1,6 +1,7 @@
 from django.db import models 
 from django.core.validators import RegexValidator
 import datetime
+
 # Create your models here.
 class signup_page(models.Model):
     fname=models.CharField(max_length=20)
