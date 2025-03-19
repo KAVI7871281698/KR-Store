@@ -17,7 +17,7 @@
             <li><a href="/dashboard_customer">Customers</a></li>
             <li><a href="/report">Reports</a></li>
             <li><a href="/dashboard_feedback">Feeback</a></li>
-            <!-- <li><a href="/setting">Settings</a></li> -->
+            <li><a href="/index">Exit</a></li>
         </ul>
     </div>
     <div class="main-content">
@@ -31,8 +31,6 @@
                     <th>Month</th>
                     <th>Year</th>
                     <th>Total Orders</th>
-                    <!-- <th>Total Sales</th>
-                    <th>Orders Processed</th> -->
                     <th>Total Amount</th>
                 </tr>
                 <tr>
@@ -40,9 +38,6 @@
                     <td>{{ year }}</td>
                     <td>{{ orders }}</td>
                     <td>₹{{ total_sales }}</td>
-                    <!-- <td>150</td>
-                    <td>120</td> -->
-                    <!-- <td>$25,000</td> -->
                 </tr>
             </table>
             <h2>Daliy Reports</h2>
@@ -51,16 +46,11 @@
                     <th>Date</th>
                     <th>Total Orders</th>
                     <th>Total Sales</th>
-                    <!-- <th>Orders Processed</th>
-                    <th>Total Amount</th> -->
                 </tr>
                 <tr>
                     <td>{{ selected_date }}</td>
                     <td>{{ orders }}</td>
                     <td>₹{{ total_sales }}</td>
-                    <!-- <td>150</td>
-                    <td>120</td>
-                    <td>$25,000</td> -->
                 </tr>
             </table>
         </section>
