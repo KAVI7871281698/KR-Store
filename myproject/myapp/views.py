@@ -334,31 +334,6 @@ def dashboard_order(request):
     orders = Ordernow.objects.all()
     return render(request,'dashboard_order.html',{'order_item':orders})
 
-# @login_required
-# def report(request):
-#     current_month = datetime.datetime.now().strftime('%B')
-#     current_year = datetime.datetime.now().year 
-#     selected_date = request.GET.get('date', datetime.date.today().isoformat())  # Gets 'YYYY-MM-DD' as a string
-#     selected_date = datetime.date.fromisoformat(selected_date)
-#     monthly_orders = Ordernow.objects.filter(order_month=current_month, order_year=current_year)
-#     total_amount = monthly_orders.aggregate(Sum('total_price'))['total_price__sum'] or 0
-#     total_orders = monthly_orders.count()
-#     daily_orders = Ordernow.objects.filter(order_date=selected_date)
-#     total = daily_orders.aggregate(total =Sum('total_price'))['total'] or 0
-#     daily_total_orders = daily_orders.count()
-    
-#     return render(request, 'report.html', {
-#         'report_data': monthly_orders,
-#         'total_sales': total_amount,
-#         'month': current_month,
-#         'year': current_year,
-#         'orders': total_orders,
-#         'selected_date': selected_date,
-#         'daily_amount':  total,
-#         'daily_orders':  daily_total_orders
-#     })
-
-
 @login_required
 def report(request):
     current_month = datetime.datetime.now().strftime('%B')
