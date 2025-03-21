@@ -36,12 +36,31 @@ class add_to_cart(models.Model):
     total_price = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)  
     order_date = models.DateTimeField(auto_now_add=True)  # Order date
 
+# class Ordernow(models.Model): 
+#     name=models.CharField(max_length=20, null=True)
+#     email = models.CharField(max_length=50, null=True)
+#     quantity = models.IntegerField(default=1)
+#     product_img = models.ImageField(upload_to='uploads/',null=True)
+#     product_name = models.CharField(max_length=50,null=True)
+#     product_price = models.DecimalField(max_digits=10, decimal_places=2)
+#     total_price = models.DecimalField(max_digits=10, decimal_places=2, default=0.00) 
+#     order = models.ForeignKey(add_to_cart, on_delete=models.CASCADE)  
+#     order_date = models.DateTimeField(auto_now_add=True) 
+#     address = models.TextField(null=True, blank=True)
+#     status = models.CharField(
+#         max_length=50,
+#         choices=[('Pending', 'Pending'), ('Processing', 'Processing'), ('Shipped', 'Shipped'), ('Delivered', 'Delivered'), ('Cancelled', 'Cancelled')],
+#         default='Pending'
+#     )
+#     order_month = models.CharField(max_length=10, default=datetime.datetime.now().strftime('%B'), editable=False)  
+#     order_year = models.IntegerField(default=datetime.datetime.now().year, editable=False)  
+
 class Ordernow(models.Model):  # Order Model
-    name=models.CharField(max_length=20, null=True)
+    name = models.CharField(max_length=20, null=True)
     email = models.CharField(max_length=50, null=True)
     quantity = models.IntegerField(default=1)
-    product_img = models.ImageField(upload_to='uploads/',null=True)
-    product_name = models.CharField(max_length=50,null=True)
+    product_img = models.ImageField(upload_to='uploads/', null=True)
+    product_name = models.CharField(max_length=50, null=True)
     product_price = models.DecimalField(max_digits=10, decimal_places=2)
     total_price = models.DecimalField(max_digits=10, decimal_places=2, default=0.00) 
     order = models.ForeignKey(add_to_cart, on_delete=models.CASCADE)  
@@ -49,10 +68,16 @@ class Ordernow(models.Model):  # Order Model
     address = models.TextField(null=True, blank=True)
     status = models.CharField(
         max_length=50,
-        choices=[('Pending', 'Pending'), ('Processing', 'Processing'), ('Shipped', 'Shipped'), ('Delivered', 'Delivered'), ('Cancelled', 'Cancelled')],
+        choices=[
+            ('Pending', 'Pending'), 
+            ('Processing', 'Processing'), 
+            ('Shipped', 'Shipped'), 
+            ('Delivered', 'Delivered'), 
+            ('Cancelled', 'Cancelled')
+        ],
         default='Pending'
     )
-    order_month = models.CharField(max_length=10, default=datetime.datetime.now().strftime('%B'), editable=False)  # Example: "February"
-    order_year = models.IntegerField(default=datetime.datetime.now().year, editable=False)  # Example: 2025
+    order_month = models.CharField(max_length=10, editable=False)
+    order_year = models.IntegerField(editable=False)
 
 

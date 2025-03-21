@@ -5,55 +5,96 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KR Store Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
     <link rel="stylesheet" href="{% static 'report.css' %}">
 </head>
-<body>
-    <div class="sidebar">
-        <h2>Admin Panel</h2>
-        <ul>
-            <li><a href="/dashboard">Dashboard</a></li>
-            <li><a href="/dashboard_order">Orders</a></li>
-            <li><a href="/dashboard_product">Products</a></li>
-            <li><a href="/dashboard_customer">Customers</a></li>
-            <li><a href="/report">Reports</a></li>
-            <li><a href="/dashboard_feedback">Feeback</a></li>
-            <li><a href="/index">Exit</a></li>
-        </ul>
-    </div>
-    <div class="main-content">
-        <header>
-            <h1>Reports</h1>
-        </header>
-        <section class="table">
-            <h2>Montly Reports</h2>
-            <table>
-                <tr>
-                    <th>Month</th>
-                    <th>Year</th>
-                    <th>Total Orders</th>
-                    <th>Total Amount</th>
-                </tr>
-                <tr>
-                    <td>{{ month }}</td>
-                    <td>{{ year }}</td>
-                    <td>{{ orders }}</td>
-                    <td>₹{{ total_sales }}</td>
-                </tr>
-            </table>
-            <h2>Daliy Reports</h2>
-            <table>
-                <tr>
-                    <th>Date</th>
-                    <th>Total Orders</th>
-                    <th>Total Sales</th>
-                </tr>
-                <tr>
-                    <td>{{ selected_date }}</td>
-                    <td>{{ orders }}</td>
-                    <td>₹{{ total_sales }}</td>
-                </tr>
-            </table>
-        </section>
+<body class="bg-gray-100 font-sans">
+    <div class="flex">
+        <!-- Sidebar -->
+        <div class="w-1/4 bg-gray-800 text-white min-h-screen p-6">
+            <h2 class="text-2xl font-bold mb-8">Admin Panel</h2>
+            <ul class="space-y-4">
+                <li><a href="/dashboard" class="hover:text-gray-300">Dashboard</a></li>
+                <li><a href="/dashboard_order" class="hover:text-gray-300">Orders</a></li>
+                <li><a href="/dashboard_product" class="hover:text-gray-300">Products</a></li>
+                <li><a href="/dashboard_customer" class="hover:text-gray-300">Customers</a></li>
+                <li><a href="/report" class="hover:text-gray-300">Reports</a></li>
+                <li><a href="/dashboard_feedback" class="hover:text-gray-300">Feedback</a></li>
+                <li><a href="/index" class="hover:text-gray-300">Exit</a></li>
+            </ul>
+        </div>
+
+        <!-- Main Content -->
+        <div class="w-3/4 p-8">
+            <header class="mb-8">
+                <h1 class="text-3xl font-bold text-gray-700">Reports</h1>
+            </header>
+            
+            <!-- Date Selection Form -->
+            <div class="mb-6">
+                <form method="GET" action="">
+                    <label for="date" class="block text-gray-600 mb-2">Select Date:</label>
+                    <input type="date" name="date" id="date" value="{{ selected_date }}" class="border p-2 rounded-lg mb-4">
+                    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg">Filter</button>
+                </form>
+            </div>
+            
+            <!-- Monthly Reports Section -->
+            <section class="mb-8">
+                <h2 class="text-xl font-bold mb-4">Monthly Reports</h2>
+                <table class="min-w-full bg-white shadow-md rounded-lg overflow-hidden w-full mb-6">
+                    <thead>
+                        <tr class="bg-gray-200 text-gray-700">
+                            <th class="px-4 py-2">Month</th>
+                            <th class="px-4 py-2">Year</th>
+                            <th class="px-4 py-2">Total Orders</th>
+                            <th class="px-4 py-2">Total Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="text-center border-t">
+                            <td class="px-4 py-2">{{ month }}</td>
+                            <td class="px-4 py-2">{{ year }}</td>
+                            <td class="px-4 py-2">{{ orders }}</td>
+                            <td class="px-4 py-2">₹{{ total_sales }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            
+            <!-- Daily Reports Section -->
+            <section>
+                <h2 class="text-xl font-bold mb-4">Daily Reports</h2>
+                <table class="min-w-full bg-white shadow-md rounded-lg overflow-hidden w-full">
+                    <thead>
+                        <tr class="bg-gray-200 text-gray-700">
+                            <th class="px-4 py-2">Selected Date</th>
+                            <th class="px-4 py-2">Total Orders</th>
+                            <th class="px-4 py-2">Total Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="text-center border-t">
+                            <td class="px-4 py-2">{{ selected_date }}</td>
+                            <td class="px-4 py-2">
+                                {% if daily_orders > 0 %}
+                                    {{ daily_orders }}
+                                {% else %}
+                                    No orders for this date.
+                                {% endif %}
+                            </td>
+                            <td class="px-4 py-2">
+                                {% if daily_amount > 0 %}
+                                    ₹{{ daily_amount }}
+                                {% else %}
+                                    ₹0.00
+                                {% endif %}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </div>
     </div>
 </body>
 </html>
