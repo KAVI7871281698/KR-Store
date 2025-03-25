@@ -1,6 +1,6 @@
 from django.db import models 
 from django.core.validators import RegexValidator
-import datetime
+from datetime import datetime
 
 # Create your models here.
 class signup_page(models.Model):
@@ -55,7 +55,7 @@ class add_to_cart(models.Model):
 #     order_month = models.CharField(max_length=10, default=datetime.datetime.now().strftime('%B'), editable=False)  
 #     order_year = models.IntegerField(default=datetime.datetime.now().year, editable=False)  
 
-class Ordernow(models.Model):  # Order Model
+class Ordernow(models.Model):
     name = models.CharField(max_length=20, null=True)
     email = models.CharField(max_length=50, null=True)
     quantity = models.IntegerField(default=1)
@@ -77,7 +77,7 @@ class Ordernow(models.Model):  # Order Model
         ],
         default='Pending'
     )
-    order_month = models.CharField(max_length=10, editable=False)
-    order_year = models.IntegerField(editable=False)
+    order_month = models.CharField(max_length=10, editable=False, null=True)
+    order_year = models.IntegerField(editable=False, null=True)
 
 

@@ -30,12 +30,31 @@
                 <h1 class="text-3xl font-bold text-gray-700">Reports</h1>
             </header>
             
-            <!-- Date Selection Form -->
+            <!-- Filters -->
             <div class="mb-6">
                 <form method="GET" action="">
-                    <label for="date" class="block text-gray-600 mb-2">Select Date:</label>
-                    <input type="date" name="date" id="date" value="{{ selected_date }}" class="border p-2 rounded-lg mb-4">
-                    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg">Filter</button>
+                    <div class="grid grid-cols-3 gap-4">
+                        <!-- Date Selection -->
+                        <div>
+                            <label for="date" class="block text-gray-600 mb-2">Select Date:</label>
+                            <input type="date" name="date" id="date" value="{{ selected_date }}" class="border p-2 rounded-lg">
+                        </div>
+
+                        <!-- Month Selection -->
+                        <div>
+                            <label for="month" class="block text-gray-600 mb-2">Select Month:</label>
+                            <select name="month" id="month" class="border p-2 rounded-lg w-full">
+                                {% for month in months_list %}
+                                    <option value="{{ month }}" {% if selected_month == month %}selected{% endif %}>{{ month }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="mt-4">
+                        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg">Filter</button>
+                    </div>
                 </form>
             </div>
             
@@ -53,8 +72,8 @@
                     </thead>
                     <tbody>
                         <tr class="text-center border-t">
-                            <td class="px-4 py-2">{{ month }}</td>
-                            <td class="px-4 py-2">{{ year }}</td>
+                            <td class="px-4 py-2">{{ selected_month }}</td>
+                            <td class="px-4 py-2">{{ selected_year }}</td>
                             <td class="px-4 py-2">{{ orders }}</td>
                             <td class="px-4 py-2">₹{{ total_sales }}</td>
                         </tr>

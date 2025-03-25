@@ -5,7 +5,7 @@ from django.contrib import messages
 from functools import wraps
 from django.db.models import Q
 import os
-import datetime
+from datetime import datetime,date
 from django.db.models import Sum 
 from django.core.mail import EmailMessage
 # import razorpay
@@ -211,21 +211,44 @@ def decrease_quantity(request, id):
     return redirect('add_to_cart')
 
 @login_required
-def order_confirm(request,id):
+def order_confirm(request, id):
     if request.method == 'POST':
-        user_address = request.POST['address']
-        confirm_order = add_to_cart.objects.get(id=id)
+        user_address = request.POST.get('address')
+        confirm_order = get_object_or_404(add_to_cart, id=id)
+        
+        # Extract product details
         user_img = confirm_order.product.demart_img
         user_product_name = confirm_order.product.product_name
         user_product_price = confirm_order.product.price
-        user_total_price = confirm_order.total_price
         user_quantity = confirm_order.quantity
+        user_total_price = user_product_price * user_quantity  # Ensure total price is calculated
+        
+        # Get user details
         user_email = request.session.get('email')
         user_name = request.session.get('fname')
-        store = Ordernow(order=confirm_order,address=user_address,name=user_name,product_price=user_product_price,email=user_email,quantity=user_quantity,product_name=user_product_name,total_price=user_total_price,product_img=user_img)
+
+        # Get current date details
+        current_date = datetime.now()
+        order_month = current_date.strftime('%B')  # Example: 'March'
+        order_year = current_date.year
+
+        # Save order to database
+        store = Ordernow(
+            order=confirm_order,
+            address=user_address,
+            name=user_name,
+            product_price=user_product_price,
+            email=user_email,
+            quantity=user_quantity,
+            product_name=user_product_name,
+            total_price=user_total_price,
+            product_img=user_img,
+            order_month=order_month,  # Explicitly set order month
+            order_year=order_year  # Explicitly set order year
+        )
         store.save()
-        
-                # Prepare email
+
+        # Prepare email
         subject = "Order Confirmation - Your Order has been Placed!"
         body = f"""
         Hello {user_name},
@@ -237,32 +260,30 @@ def order_confirm(request,id):
         🔢 Quantity: {user_quantity}
         💵 Total Price: ${user_total_price}
         📍 Shipping Address: {user_address}
-         img:{user_img}
 
         Thank you for shopping with us!
 
         Best Regards,  
         Your Company
         """
-        # user_emails = "kavi7871281698@gmail.com"
 
         email = EmailMessage(
             subject,
             body,
-            'krstorer84@gmail.com',  # Developer Gmail
+            'krstorer84@gmail.com',  # Developer's email
             [user_email]  # Customer's email
         )
-        # Attach image if it exists
 
+        # Attach image if it exists
         if user_img:
-            image_path = os.path.join(settings.MEDIA_ROOT, str(user_img))  # Get the full image path
+            image_path = os.path.join(settings.MEDIA_ROOT, str(user_img))  # Get full image path
             if os.path.exists(image_path):
                 with open(image_path, 'rb') as img:
-                    email.attach(user_img.name, img.read(), 'image/jpeg')  # Adjust MIME type if needed
+                    email.attach(user_img.name, img.read(), 'image/jpeg')  # Attach image
 
         email.send()  # Send the email
 
-        return render(request,'order_confirm.html')
+        return render(request, 'order_confirm.html')
     
     user_email = request.session.get('email')
     view = add_to_cart.objects.filter(email=user_email).last()
@@ -336,35 +357,48 @@ def dashboard_order(request):
 
 @login_required
 def report(request):
-    current_month = datetime.datetime.now().strftime('%B')
-    current_year = datetime.datetime.now().year
-    selected_date_str = request.GET.get('date', datetime.date.today().isoformat())
-    
-    try:
-        selected_date = datetime.date.fromisoformat(selected_date_str)
-    except ValueError:
-        selected_date = datetime.date.today()  # Default to today's date if there's an issue
+    current_month = datetime.now().strftime('%B')
+    current_year = datetime.now().year
 
-    # Filter monthly orders
-    monthly_orders = Ordernow.objects.filter(order_month=current_month, order_year=current_year)
+    # List of months for dropdown
+    months_list = [
+        "January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+    ]
+    
+    # Get selected month and year
+    selected_month = request.GET.get('month', current_month)
+    selected_year = int(request.GET.get('year', current_year))
+
+    # Get the selected date
+    selected_date_str = request.GET.get('date', date.today().isoformat())
+    try:
+        selected_date = date.fromisoformat(selected_date_str)
+    except ValueError:
+        selected_date = date.today()
+
+    # Filter orders for the selected month and year
+    monthly_orders = Ordernow.objects.filter(order_month=selected_month, order_year=selected_year)
     total_amount = monthly_orders.aggregate(Sum('total_price'))['total_price__sum'] or 0
     total_orders = monthly_orders.count()
 
-    # Filter daily orders
+    # Filter orders for the selected date
     daily_orders = Ordernow.objects.filter(order_date__date=selected_date)
     total = daily_orders.aggregate(total=Sum('total_price'))['total'] or 0
     daily_total_orders = daily_orders.count()
 
     return render(request, 'report.html', {
+        'months_list': months_list,  # Pass months list to template
+        'selected_month': selected_month,
+        'selected_year': selected_year,
         'report_data': monthly_orders,
         'total_sales': total_amount,
-        'month': current_month,
-        'year': current_year,
         'orders': total_orders,
         'selected_date': selected_date,
         'daily_amount': total,
         'daily_orders': daily_total_orders
     })
+
 
 @login_required
 def feedback(request):
