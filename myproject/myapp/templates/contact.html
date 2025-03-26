@@ -7,24 +7,137 @@
     <title>Contact Me | KR Store</title>
     <link rel="stylesheet" href="{% static 'contact.css' %}">
 </head>
+<style>
+        * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+    }
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 20px;
+        background-color: #2d2c2c;
+        color: white;
+    }
+    .logo a {
+        font-size: 24px;
+        font-weight: bold;
+        color: white;
+        text-decoration: none;
+    }
+    .nav-links {
+        list-style: none;
+        display: flex;
+    }
+    .nav-links li {
+        position: relative;
+        margin: 0 10px;
+    }
+    .nav-links a {
+        color: white;
+        text-decoration: none;
+        font-size: 16px;
+        padding: 10px;
+        transition: 0.3s;
+    }
+    .nav-links a:hover {
+        color: red;
+    }
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        list-style: none;
+        top: 100%;
+        left: 0;
+        min-width: 150px;
+        box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+    }
+    .dropdown-content li {
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+    }
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+    .user-info {
+        padding: 10px;
+        text-align: center;
+    }
+    .menu-toggle {
+        display: none;
+        font-size: 24px;
+        cursor: pointer;
+    }
+    @media (max-width: 768px) {
+        .nav-links {
+            display: none;
+            flex-direction: column;
+            position: absolute;
+            top: 60px;
+            right: 0;
+            background: #333;
+            width: 200px;
+            padding: 10px;
+        }
+        .nav-links.active {
+            display: flex;
+        }
+        .menu-toggle {
+            display: block;
+        }
+    }
+</style>
 <body>
 
     <!-- Navbar -->
-    <nav>
-        <div class="dropdown">
-            <button class="dropdown-btn">KR Store</button>
-            <div class="dropdown-content">
-                <a href="/signin">Signin</a>
-                <a href="/signup">Signup</a>
-                <a href="/loggout">Logout</a>
-                {% if "admin7871@gmail.com" == request.session.email %}
-                <a href="/dashboard">Admin</a>
-                {% endif %}
-            </div>
+    <nav class="navbar">
+        <div class="logo">
+            <a href="/">KR Store</a>
         </div>
+    
+        <ul class="nav-links">
+            <li><a href="/index">Home</a></li>
+            <li><a href="/about">About</a></li>
+    
+            <li class="dropdown">
+                <a href="#">Company &#9662;</a>
+                <ul class="dropdown-content" style="background-color: black;">
+                    <li><a href="/demart">Demart</a></li>
+                    <li><a href="/spencers">Spencers</a></li>
+                </ul>
+            </li>
+    
+            <li><a href="/product">Products</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/shipped">Orders</a></li>
+    
+            <!-- User Dropdown -->
+            <li class="dropdown user-dropdown">
+                <a href="#" style="color: red; font-size: large;">
+                    {{ request.session.fname|default:"Account" }}
+                </a>
+                <ul class="dropdown-content" style="background-color: black;">
+                    {% if request.session.fname %}
+                        <li><a href="/signin">Signin</a></li>
+                        <li><a href="/signup">Signup</a></li>
+                        <li><a href="/loggout">Logout</a></li>
+                        {% if request.session.email == "admin7871@gmail.com" %}
+                            <li><a href="/dashboard">Admin Dashboard</a></li>
+                        {% endif %}
+                    {% else %}
+                        <li><a href="/signin">Signin</a></li>
+                        <li><a href="/signup">Signup</a></li>
+                    {% endif %}
+                </ul>
+            </li>
+        </ul>
+    
+        <!-- Mobile Menu Toggle -->
         <div class="menu-toggle" onclick="toggleMenu()">☰</div>
     </nav>
-
     <!-- Contact Section -->
     <section id="contact">
         <h2 class="section-title">contact me</h2>
@@ -62,5 +175,10 @@
     </section>
 
     <script src="{% static 'contact.js' %}"></script>
+    <script>
+        function toggleMenu() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        }
+    </script>
 </body>
 </html>
